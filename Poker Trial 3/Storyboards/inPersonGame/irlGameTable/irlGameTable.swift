@@ -124,6 +124,64 @@ public enum HandStrength: Int {
     case EmptyHand, HighCard, Pair, TwoPair, ThreeOfAKind, Straight, Flush, FullHouse, FourOfAKind, StraightFlush
 }
 
+func cardToString(card:Card) ->String {
+    let rank = card.rank
+    let suit = card.suit
+    var cardString:String = ""
+    if rank == Rank.Two {
+        cardString = cardString + "2"
+    }
+    if rank == Rank.Three {
+        cardString = cardString + "3"
+    }
+    if rank == Rank.Four {
+        cardString = cardString + "4"
+    }
+    if rank == Rank.Five {
+        cardString = cardString + "5"
+    }
+    if rank == Rank.Six {
+        cardString = cardString + "6"
+    }
+    if rank == Rank.Seven {
+        cardString = cardString + "7"
+    }
+    if rank == Rank.Eight {
+        cardString = cardString + "8"
+    }
+    if rank == Rank.Nine {
+        cardString = cardString + "9"
+    }
+    if rank == Rank.Ten {
+        cardString = cardString + "10"
+    }
+    if rank == Rank.Jack {
+        cardString = cardString + "J"
+    }
+    if rank == Rank.Queen {
+        cardString = cardString + "Q"
+    }
+    if rank == Rank.King {
+        cardString = cardString + "K"
+    }
+    if rank == Rank.Ace {
+        cardString = cardString + "A"
+    }
+    if suit == Suit.Heart {
+        cardString = cardString + "H"
+    }
+    if suit == Suit.Diamond {
+        cardString = cardString + "D"
+    }
+    if suit == Suit.Spade {
+        cardString = cardString + "S"
+    }
+    if suit == Suit.Club {
+        cardString = cardString + "C"
+    }
+    return cardString
+}
+
 
 
 class irlGameTable: UIViewController {
@@ -176,6 +234,11 @@ class irlGameTable: UIViewController {
     
     @IBOutlet weak var roomCode: UILabel!
     
+    @IBOutlet weak var waitingLabel: UILabel!
+    
+    
+    var rmDeck:Deck = Deck()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -217,7 +280,7 @@ class irlGameTable: UIViewController {
         
         
         //screen for host
-        if inPersonPlayer.isHost == true {
+        if inPersonPlayer.isHost == "true" {
             leaveButton.isHidden = true
             dealButton.isHidden = true
             foldButton.isHidden = true
@@ -232,13 +295,16 @@ class irlGameTable: UIViewController {
             roomCode.text = "Room Code:\n\(inPersonRm.roomCode)"
         }
         else {
+            if inPersonRm.gameStarted == "false" {
+                waitingLabel.isHidden = false
+            }
             settingsButton.isHidden = true
             dealButton.isHidden = true
             handButton.isHidden = true
             foldButton.isHidden = true
             roomCode.text = "Room Code:\n\(inPersonRm.roomCode)"
             dealButton.isHidden = true
-            handButton.isHidden = true
+            handLabel.isHidden = true
             for i in stride(from: 0, through: 9, by: 1) {
                 names[i]?.isHidden = true
             }
@@ -269,4 +335,47 @@ class irlGameTable: UIViewController {
     override var prefersStatusBarHidden: Bool {
         return true
     }
+    
+    @IBAction func tapNewHand(_ sender: Any) {
+        //resets all visuals
+        rmDeck = Deck()
+        dealButton.isHidden = false
+        foldButton.isHidden = false
+        let comCards = [flop1, flop2, flop3, turn, river]
+        for card in comCards {
+            card?.isHidden = false
+            card?.image = UIImage(named: "back")
+        }
+        
+        //starts game
+        if inPersonRm.gameStarted == "false" {
+            inPersonRm.gameStarted = "true"
+            let ref = Database.database().reference()
+            ref.child(inPersonRm.roomCode).child("gameStarted").setValue("true")
+        }
+        
+        //changes cards on screen to random drawn cards
+        let c1:Card = rmDeck.drawCard() ?? Card(suit: Suit.Diamond, rank: Rank.Two)
+        let c2:Card = rmDeck.drawCard() ?? Card(suit: Suit.Diamond, rank: Rank.Two)
+        let cardString1 = cardToString(card:c1)
+        let cardString2 = cardToString(card:c2)
+        card1.image = UIImage(named: cardString1)
+        card2.image = UIImage(named: cardString2)
+        
+        //updates variables
+        inPersonPlayer.card1 = c1
+        inPersonPlayer.card2 = c2
+        inPersonPlayer.inHand = "true"
+        for i in stride(from: 0, through: inPersonPlayers.count - 1, by: 1) {
+            if inPersonPlayers[i]["isHost"] == "true" {
+                inPersonPlayers[i]["card1"] = cardString1
+                inPersonPlayers[i]["card2"] = cardString2
+                inPersonPlayers[i]["inHand"] = "true"
+            }
+        }
+        let ref = Database.database().reference()
+        ref.child(inPersonRm.roomCode).child("roomPlayers").setValue(inPersonPlayers)
+    }
+    
+    
 }

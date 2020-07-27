@@ -48,7 +48,7 @@ class irlJoinGame: UIViewController {
     
     func join(name:String, code:String) throws -> Void {
         var codeFlag:Bool = false
-        if name.isEmpty || (name.count > 15) {
+        if name.isEmpty || (name.count > 10) {
             throw joinGameError.invalidName
         }
         let ref = Database.database().reference()
@@ -74,7 +74,7 @@ class irlJoinGame: UIViewController {
                         if inPersonRm.roomPlayers.count < 10 {
                             inPersonRm.addPlayer(name: name)
                             inPersonRm.roomCode = key
-                            inPersonPlayer = irlPlayer(name: name, isHost:false)
+                            inPersonPlayer = irlPlayer(name: name, isHost: "false")
                             ref.child(key).child("roomPlayers").setValue(inPersonPlayers)
                             
                             //segues to storyboard reference for gameTable
@@ -111,7 +111,7 @@ class irlJoinGame: UIViewController {
         do {
             try join(name: name, code: code)
         } catch joinGameError.invalidName{
-            errorMsg += "Enter name between 1 and 15 characters\n"
+            errorMsg += "Enter name between 1 and 10 characters\n"
         } catch {
             print("Unexpected error: \(error).")
         }
