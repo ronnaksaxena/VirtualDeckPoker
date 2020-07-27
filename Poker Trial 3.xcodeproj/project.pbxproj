@@ -99,8 +99,6 @@
 				513B89EC24CCD3A000FC24B8 /* irlGameTable */,
 				513B89E724CCC92700FC24B8 /* irlCreateGame */,
 				513B89E624CCC91D00FC24B8 /* irlJoinGame */,
-				513B89E224CCC57100FC24B8 /* irlJoinGame.storyboard */,
-				513B89E424CCC59100FC24B8 /* irlJoinGame.swift */,
 			);
 			path = inPersonGame;
 			sourceTree = "<group>";
@@ -118,6 +116,8 @@
 		513B89E624CCC91D00FC24B8 /* irlJoinGame */ = {
 			isa = PBXGroup;
 			children = (
+				513B89E224CCC57100FC24B8 /* irlJoinGame.storyboard */,
+				513B89E424CCC59100FC24B8 /* irlJoinGame.swift */,
 			);
 			path = irlJoinGame;
 			sourceTree = "<group>";
