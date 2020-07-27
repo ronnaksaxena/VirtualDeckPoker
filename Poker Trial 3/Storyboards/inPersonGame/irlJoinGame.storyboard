@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main-->
+        <scene sceneID="dj2-cu-frS">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="Main" id="vWG-mY-CVb" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Flp-3j-KM9"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="l5N-GJ-wXx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-360" y="-215"/>
+        </scene>
+        <!--Irl Join Game-->
+        <scene sceneID="l6R-g6-P1l">
+            <objects>
+                <viewController storyboardIdentifier="irlJoinGame" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DjG-QS-pyD" customClass="irlJoinGame" customModule="Poker_Trial_3" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IuD-wl-vyH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="xXF-I5-pGf">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UFy-Uu-cOh">
+                                <rect key="frame" x="95.5" y="691" width="223" height="71"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="50"/>
+                                <state key="normal" title="Join Game">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapJoin:" destination="DjG-QS-pyD" eventType="touchUpInside" id="IqU-LG-Iul"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In Person Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SVi-lv-Usj">
+                                <rect key="frame" x="109" y="204" width="196" height="35"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="30"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j4m-RY-rv1">
+                                <rect key="frame" x="20" y="64" width="63" height="47"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="30"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="vWG-mY-CVb" kind="show" id="Mun-Wj-Avi"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="iPJ-om-a1u">
+                                <rect key="frame" x="53" y="399" width="308.5" height="98"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="noy-yp-HnT">
+                                        <rect key="frame" x="0.0" y="0.0" width="308.5" height="35"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fBy-lN-WXT">
+                                                <rect key="frame" x="0.0" y="0.0" width="158.5" height="35"/>
+                                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="30"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DbG-VB-qOf" userLabel="nameText">
+                                                <rect key="frame" x="158.5" y="0.0" width="150" height="35"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="150" id="q1I-sZ-TWA"/>
+                                                    <constraint firstAttribute="height" constant="35" id="xgJ-Sm-Q0j"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Zq-Ya-FPD">
+                                        <rect key="frame" x="0.0" y="63" width="300" height="35"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Code:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o3s-MI-4Cm">
+                                                <rect key="frame" x="0.0" y="0.0" width="150" height="35"/>
+                                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="30"/>
+                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="76X-Xm-kDC" userLabel="codeText">
+                                                <rect key="frame" x="150" y="0.0" width="150" height="35"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="150" id="vCI-qT-VW2"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sp2-Ku-cxN" userLabel="errorLabel">
+                                <rect key="frame" x="32" y="508" width="350" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="FNa-1J-mZX"/>
+                                    <constraint firstAttribute="width" constant="350" id="GbI-da-fA4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="20"/>
+                                <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Kc5-3u-ucU" firstAttribute="bottom" secondItem="UFy-Uu-cOh" secondAttribute="bottom" constant="100" id="0f1-jW-5hr"/>
+                            <constraint firstItem="xXF-I5-pGf" firstAttribute="top" secondItem="IuD-wl-vyH" secondAttribute="top" id="1zk-7A-f28"/>
+                            <constraint firstItem="SVi-lv-Usj" firstAttribute="centerX" secondItem="IuD-wl-vyH" secondAttribute="centerX" id="A5I-Cd-I6X"/>
+                            <constraint firstItem="Sp2-Ku-cxN" firstAttribute="centerX" secondItem="IuD-wl-vyH" secondAttribute="centerX" id="Au5-M8-WJw"/>
+                            <constraint firstAttribute="bottom" secondItem="xXF-I5-pGf" secondAttribute="bottom" id="C7Z-Zb-wss"/>
+                            <constraint firstItem="Sp2-Ku-cxN" firstAttribute="centerY" secondItem="IuD-wl-vyH" secondAttribute="centerY" constant="160" id="COD-bI-1TB"/>
+                            <constraint firstItem="j4m-RY-rv1" firstAttribute="leading" secondItem="Kc5-3u-ucU" secondAttribute="leading" constant="20" id="GxU-e6-pBT"/>
+                            <constraint firstItem="SVi-lv-Usj" firstAttribute="top" secondItem="Kc5-3u-ucU" secondAttribute="top" constant="160" id="Nc7-tW-dD2"/>
+                            <constraint firstItem="xXF-I5-pGf" firstAttribute="leading" secondItem="IuD-wl-vyH" secondAttribute="leading" id="S8K-3V-IAS"/>
+                            <constraint firstItem="j4m-RY-rv1" firstAttribute="top" secondItem="Kc5-3u-ucU" secondAttribute="top" constant="20" id="SnB-vy-ERq"/>
+                            <constraint firstItem="iPJ-om-a1u" firstAttribute="centerY" secondItem="IuD-wl-vyH" secondAttribute="centerY" id="eZL-xw-Yef"/>
+                            <constraint firstItem="UFy-Uu-cOh" firstAttribute="centerX" secondItem="IuD-wl-vyH" secondAttribute="centerX" id="ge8-6n-PWG"/>
+                            <constraint firstAttribute="trailing" secondItem="xXF-I5-pGf" secondAttribute="trailing" id="pYU-NR-ehA"/>
+                            <constraint firstItem="iPJ-om-a1u" firstAttribute="centerX" secondItem="IuD-wl-vyH" secondAttribute="centerX" id="xoC-Sm-YW3"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Kc5-3u-ucU"/>
+                    </view>
+                    <connections>
+                        <outlet property="codeText" destination="76X-Xm-kDC" id="cvH-TE-1Oh"/>
+                        <outlet property="errorLabel" destination="Sp2-Ku-cxN" id="kMO-ce-Oib"/>
+                        <outlet property="nameText" destination="DbG-VB-qOf" id="JbU-Ky-072"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PsX-Hi-a78" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="164" y="50"/>
+        </scene>
+        <!--irlGameTable-->
+        <scene sceneID="AcT-T7-P8m">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="irlGameTable" storyboardName="irlGameTable" referencedIdentifier="irlGameTable" id="3Uv-pe-oiB" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ndq-GU-kEZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="806" y="46"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Background" width="414" height="896"/>
+    </resources>
+</document>

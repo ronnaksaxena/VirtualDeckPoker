@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main-->
+        <scene sceneID="3X2-ip-EhX">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="an3-G2-4qW" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="EH0-QD-U4X"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AKx-yE-1P8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-484" y="-205"/>
+        </scene>
+        <!--Irl Create Game-->
+        <scene sceneID="Jbl-Jk-6L8">
+            <objects>
+                <viewController storyboardIdentifier="irlCreateGame" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rp7-f6-K4s" customClass="irlCreateGame" customModule="Poker_Trial_3" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YqQ-QV-PSG">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="MvI-el-4tJ">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ta9-nR-t5t">
+                                <rect key="frame" x="20" y="64" width="63" height="47"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="30"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="an3-G2-4qW" kind="show" id="CTf-qi-iTN"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In Person Mode" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zgq-0H-nri">
+                                <rect key="frame" x="109" y="204" width="196" height="35"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="30"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="1CT-vD-dTG">
+                                <rect key="frame" x="49" y="430.5" width="316.5" height="35"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7cu-46-awN">
+                                        <rect key="frame" x="0.0" y="0.0" width="158.5" height="35"/>
+                                        <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="30"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H0u-in-xFK" userLabel="name">
+                                        <rect key="frame" x="166.5" y="0.0" width="150" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="Gx7-A9-cbk"/>
+                                            <constraint firstAttribute="width" constant="150" id="jBJ-Ig-7yK"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p4v-Dz-ui3" userLabel="createGameButton">
+                                <rect key="frame" x="71.5" y="691" width="271" height="71"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="50"/>
+                                <state key="normal" title="Create Game">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapCreateGame:" destination="rp7-f6-K4s" eventType="touchUpInside" id="wP8-vv-bQA"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7E0-4z-NeS" userLabel="errorLabel">
+                                <rect key="frame" x="32" y="488" width="350" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="0qh-7G-6vs"/>
+                                    <constraint firstAttribute="width" constant="350" id="be1-nS-dL5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="20"/>
+                                <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="1CT-vD-dTG" firstAttribute="centerX" secondItem="YqQ-QV-PSG" secondAttribute="centerX" id="21P-HW-cks"/>
+                            <constraint firstItem="7E0-4z-NeS" firstAttribute="centerX" secondItem="YqQ-QV-PSG" secondAttribute="centerX" id="2rD-ET-YOL"/>
+                            <constraint firstItem="7E0-4z-NeS" firstAttribute="centerY" secondItem="YqQ-QV-PSG" secondAttribute="centerY" constant="140" id="3bp-hD-z3D"/>
+                            <constraint firstItem="MvI-el-4tJ" firstAttribute="top" secondItem="YqQ-QV-PSG" secondAttribute="top" id="5Gn-db-xaj"/>
+                            <constraint firstItem="24D-Ic-wMt" firstAttribute="bottom" secondItem="p4v-Dz-ui3" secondAttribute="bottom" constant="100" id="93K-nt-Ztw"/>
+                            <constraint firstItem="zgq-0H-nri" firstAttribute="top" secondItem="24D-Ic-wMt" secondAttribute="top" constant="160" id="Bgu-UZ-TNX"/>
+                            <constraint firstItem="MvI-el-4tJ" firstAttribute="leading" secondItem="YqQ-QV-PSG" secondAttribute="leading" id="KnR-yL-r4x"/>
+                            <constraint firstItem="1CT-vD-dTG" firstAttribute="centerY" secondItem="YqQ-QV-PSG" secondAttribute="centerY" id="Y9O-Mm-NgF"/>
+                            <constraint firstItem="zgq-0H-nri" firstAttribute="centerX" secondItem="YqQ-QV-PSG" secondAttribute="centerX" id="erG-cD-jDP"/>
+                            <constraint firstItem="p4v-Dz-ui3" firstAttribute="centerX" secondItem="YqQ-QV-PSG" secondAttribute="centerX" id="nMO-FE-7GS"/>
+                            <constraint firstItem="ta9-nR-t5t" firstAttribute="leading" secondItem="24D-Ic-wMt" secondAttribute="leading" constant="20" id="tLO-1I-dfy"/>
+                            <constraint firstItem="ta9-nR-t5t" firstAttribute="top" secondItem="24D-Ic-wMt" secondAttribute="top" constant="20" id="tci-q9-7fb"/>
+                            <constraint firstAttribute="trailing" secondItem="MvI-el-4tJ" secondAttribute="trailing" id="xGS-Hn-tSL"/>
+                            <constraint firstAttribute="bottom" secondItem="MvI-el-4tJ" secondAttribute="bottom" id="zyx-VA-CaR"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="24D-Ic-wMt"/>
+                    </view>
+                    <connections>
+                        <outlet property="createGameButton" destination="p4v-Dz-ui3" id="46Y-xz-7VY"/>
+                        <outlet property="errorLabel" destination="7E0-4z-NeS" id="Xem-dS-8Xw"/>
+                        <outlet property="name" destination="H0u-in-xFK" id="D7N-zl-MCW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2KR-IH-N70" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="95.652173913043484" y="59.598214285714285"/>
+        </scene>
+        <!--irlGameTable-->
+        <scene sceneID="0Pp-9D-QQ1">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="irlGameTable" storyboardName="irlGameTable" referencedIdentifier="irlGameTable" id="2Tq-Cf-fDc" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nyw-4R-3zc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="690" y="-56"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Background" width="414" height="896"/>
+    </resources>
+</document>

@@ -1,0 +1,6 @@
+framework module Pods_Poker_Trial_3 {
+  umbrella header "Pods-Poker Trial 3-umbrella.h"
+
+  export *
+  module * { export * }
+}

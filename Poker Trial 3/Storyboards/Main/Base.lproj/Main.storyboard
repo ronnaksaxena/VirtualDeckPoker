@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DxB-QS-ZCF">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--joinGame-->
+        <scene sceneID="crm-xi-PEh">
+            <objects>
+                <viewControllerPlaceholder storyboardName="joinGame" referencedIdentifier="joinGame" id="GXP-nR-jO6" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="vEN-e5-xOu"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NNB-sW-I81" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2707" y="245"/>
+        </scene>
+        <!--createGame-->
+        <scene sceneID="6jY-mZ-hqR">
+            <objects>
+                <viewControllerPlaceholder storyboardName="createGame" referencedIdentifier="createGame" id="0NX-NH-IIF" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="yQa-hl-pof"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wqo-PV-V5F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2719" y="323"/>
+        </scene>
+        <!--online-->
+        <scene sceneID="cBQ-Vi-nIe">
+            <objects>
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="cTw-LY-n9n" userLabel="online" customClass="online" customModule="Poker_Trial_3" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oUY-4h-0Sf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="51tm8dwiIRL._AC_SX425_" translatesAutoresizingMaskIntoConstraints="NO" id="2MS-uZ-fpk">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="6MV-lY-kCq">
+                                <rect key="frame" x="125.5" y="386" width="163" height="124"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zls-eC-xJ1">
+                                        <rect key="frame" x="0.0" y="0.0" width="163" height="47"/>
+                                        <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="30"/>
+                                        <state key="normal" title="Join Game">
+                                            <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="GXP-nR-jO6" kind="show" id="ZlG-VX-C4k"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oQI-1N-Eyr">
+                                        <rect key="frame" x="0.0" y="77" width="163" height="47"/>
+                                        <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="30"/>
+                                        <state key="normal" title="Create Game">
+                                            <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="0NX-NH-IIF" kind="show" id="RxS-Zb-ySI"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Online Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bq2-3y-8TE">
+                                <rect key="frame" x="103" y="184" width="208" height="47"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="40"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="2MS-uZ-fpk" secondAttribute="trailing" id="FYy-Zc-qYb"/>
+                            <constraint firstAttribute="bottom" secondItem="2MS-uZ-fpk" secondAttribute="bottom" id="Lwd-uQ-UgK"/>
+                            <constraint firstItem="bq2-3y-8TE" firstAttribute="centerX" secondItem="oUY-4h-0Sf" secondAttribute="centerX" id="PEO-h3-elD"/>
+                            <constraint firstItem="6MV-lY-kCq" firstAttribute="centerX" secondItem="oUY-4h-0Sf" secondAttribute="centerX" id="XyB-Cd-Wvg"/>
+                            <constraint firstItem="2MS-uZ-fpk" firstAttribute="leading" secondItem="oUY-4h-0Sf" secondAttribute="leading" id="cRh-md-nvY"/>
+                            <constraint firstItem="6MV-lY-kCq" firstAttribute="centerY" secondItem="oUY-4h-0Sf" secondAttribute="centerY" id="jdK-iz-xp1"/>
+                            <constraint firstItem="2MS-uZ-fpk" firstAttribute="top" secondItem="oUY-4h-0Sf" secondAttribute="top" id="oRC-Ak-f0O"/>
+                            <constraint firstItem="bq2-3y-8TE" firstAttribute="top" secondItem="Diu-Td-nf0" secondAttribute="top" constant="140" id="vch-Qp-DPB"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Diu-Td-nf0"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Online" image="wifi" catalog="system" id="rQw-5e-zp4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pv7-lE-gwk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2091" y="292"/>
+        </scene>
+        <!--InPerson-->
+        <scene sceneID="c6v-KC-AQ4">
+            <objects>
+                <viewController title="inPerson" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="o4H-9W-4wT" userLabel="InPerson" customClass="inPerson" customModule="Poker_Trial_3" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Jih-1c-gtu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="0Yi-iQ-Ci5">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In Person Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w62-bz-nBi">
+                                <rect key="frame" x="76.5" y="184" width="261.5" height="47"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="40"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="xtG-Xf-C1L">
+                                <rect key="frame" x="125.5" y="386" width="163" height="124"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V9n-js-pgw">
+                                        <rect key="frame" x="0.0" y="0.0" width="163" height="47"/>
+                                        <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="30"/>
+                                        <state key="normal" title="Join Game">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="cr2-ml-jaA" kind="show" id="oHE-AF-LLB"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gbt-e3-ePu">
+                                        <rect key="frame" x="0.0" y="77" width="163" height="47"/>
+                                        <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="30"/>
+                                        <state key="normal" title="Create Game">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="jxw-x0-IdX" kind="show" id="V2W-NQ-axX"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="xtG-Xf-C1L" firstAttribute="centerY" secondItem="Jih-1c-gtu" secondAttribute="centerY" id="Eml-74-jWG"/>
+                            <constraint firstAttribute="trailing" secondItem="0Yi-iQ-Ci5" secondAttribute="trailing" id="IoV-fP-a2m"/>
+                            <constraint firstItem="w62-bz-nBi" firstAttribute="centerX" secondItem="Jih-1c-gtu" secondAttribute="centerX" id="Ko4-N4-kDe"/>
+                            <constraint firstItem="xtG-Xf-C1L" firstAttribute="centerX" secondItem="Jih-1c-gtu" secondAttribute="centerX" id="UVo-8l-m2M"/>
+                            <constraint firstAttribute="bottom" secondItem="0Yi-iQ-Ci5" secondAttribute="bottom" id="aS1-9W-5xt"/>
+                            <constraint firstItem="w62-bz-nBi" firstAttribute="top" secondItem="aBD-UB-5TU" secondAttribute="top" constant="140" id="nCH-H7-anU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="aBD-UB-5TU"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="In Person" image="person.3.fill" catalog="system" id="u3S-I9-0PK"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DcV-uK-nmx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2091" y="-357"/>
+        </scene>
+        <!--irlJoinGame-->
+        <scene sceneID="Zgb-Ny-PyX">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="irlJoinGame" storyboardName="irlJoinGame" referencedIdentifier="irlJoinGame" id="cr2-ml-jaA" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="z2k-Eh-vLk"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uS0-qD-Ypy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2818" y="-423"/>
+        </scene>
+        <!--irlCreateGame-->
+        <scene sceneID="vzp-6P-xjB">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="irlCreateGame" storyboardName="irlCreateGame" referencedIdentifier="irlCreateGame" id="jxw-x0-IdX" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="QOn-mh-i4O"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sDh-QM-8oc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2846" y="-321"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="nj2-y3-X75">
+            <objects>
+                <tabBarController storyboardIdentifier="Main" title="Main" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="DxB-QS-ZCF" customClass="Main" customModule="Poker_Trial_3" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JTF-i7-0hz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="o4H-9W-4wT" kind="relationship" relationship="viewControllers" id="84E-72-ror"/>
+                        <segue destination="cTw-LY-n9n" kind="relationship" relationship="viewControllers" id="liX-Pd-1tw"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Udf-jP-76H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1172" y="-32"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="51tm8dwiIRL._AC_SX425_" width="425" height="425"/>
+        <image name="Background" width="414" height="896"/>
+        <image name="person.3.fill" catalog="system" width="128" height="61"/>
+        <image name="wifi" catalog="system" width="128" height="92"/>
+    </resources>
+</document>
