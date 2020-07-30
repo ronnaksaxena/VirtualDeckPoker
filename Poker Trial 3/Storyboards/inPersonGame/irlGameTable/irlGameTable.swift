@@ -11,6 +11,7 @@ import UIKit
 import SpriteKit
 import GameplayKit
 import FirebaseDatabase
+import Firebase
 
 public enum Rank:Int {
     case Two = 2, Three, Four, Five, Six, Seven, Eight, Nine, Ten
@@ -365,17 +366,19 @@ class irlGameTable: UIViewController {
         //updates variables
         inPersonPlayer.card1 = c1
         inPersonPlayer.card2 = c2
-        inPersonPlayer.inHand = "true"
         for i in stride(from: 0, through: inPersonPlayers.count - 1, by: 1) {
             if inPersonPlayers[i]["isHost"] == "true" {
                 inPersonPlayers[i]["card1"] = cardString1
                 inPersonPlayers[i]["card2"] = cardString2
-                inPersonPlayers[i]["inHand"] = "true"
             }
         }
         let ref = Database.database().reference()
         ref.child(inPersonRm.roomCode).child("roomPlayers").setValue(inPersonPlayers)
     }
     
-    
+    /*let database = Database.database().reference()
+    lazy var rmRef = database.child(inPersonRm.roomCode)
+    rmRef.observeEventType(.ChildChanged, withBlock: { (snapshot) -> Void in
+        
+    })*/
 }

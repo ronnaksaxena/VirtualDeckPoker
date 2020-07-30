@@ -18,11 +18,11 @@ struct irlPlayer {
     var isHost:String
     var card1:Card?
     var card2:Card?
-    var inHand:String
+    var folds:String
     init (name:String, isHost:String) {
         self.name = name
         self.isHost = isHost
-        self.inHand = "false"
+        self.folds = "0"
     }
 }
 
@@ -35,7 +35,7 @@ struct irlRoom {
         self.roomPlayers = players
     }
     mutating func addPlayer(name:String) -> Void{
-        let newPlayer:[String:String] = ["name":name, "isHost":"false", "card1":"00", "card2":"00", "inHand":"false"]
+        let newPlayer:[String:String] = ["name":name, "isHost":"false", "card1":"00", "card2":"00", "folds":"0"]
         self.roomPlayers.append(newPlayer)
         inPersonPlayers = self.roomPlayers
     }
@@ -91,7 +91,7 @@ class irlCreateGame: UIViewController {
         if errorMsg.isEmpty {
             //updates global variables
             inPersonPlayer = irlPlayer(name: nameText, isHost:"true")
-            inPersonPlayers = [["name":inPersonPlayer.name, "isHost":"true", "card1":"00", "card2":"00", "inHand":"false"]]
+            inPersonPlayers = [["name":inPersonPlayer.name, "isHost":"true", "card1":"00", "card2":"00", "folds":"0"]]
             inPersonRm = irlRoom(players: inPersonPlayers)
             
             //updates new key in server
