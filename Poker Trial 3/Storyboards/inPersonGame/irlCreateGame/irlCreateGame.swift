@@ -53,9 +53,14 @@ class irlCreateGame: UIViewController {
     
     @IBOutlet weak var errorLabel: UILabel!
     
+    @IBOutlet weak var createButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        createButton.layer.cornerRadius = 10.0
+        createButton.tintColor = UIColor.white
+        createButton.layer.borderWidth = 2.0
+        createButton.layer.borderColor = CGColor.init(srgbRed: 255/255, green: 255/255, blue: 255/255, alpha: 1)
     }
 
     override var shouldAutorotate: Bool {

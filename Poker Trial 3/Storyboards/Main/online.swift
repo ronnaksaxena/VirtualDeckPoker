@@ -12,9 +12,22 @@ import SpriteKit
 import GameplayKit
 
 class online: UIViewController {
-
+    
+    @IBOutlet weak var joinButton: UIButton!
+    
+    @IBOutlet weak var createButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        //ligh grey (119,136,153)
+        joinButton.layer.cornerRadius = 10.0
+        joinButton.tintColor = UIColor.white
+        joinButton.layer.borderWidth = 2.0
+        joinButton.layer.borderColor = CGColor.init(srgbRed: 119/255, green: 136/255, blue: 153/255, alpha: 1)
+        createButton.layer.cornerRadius = 10.0
+        createButton.tintColor = UIColor.white
+        createButton.layer.borderWidth = 2.0
+        createButton.layer.borderColor = CGColor.init(srgbRed: 119/255, green: 136/255, blue: 153/255, alpha: 1)
     }
 
     override var shouldAutorotate: Bool {

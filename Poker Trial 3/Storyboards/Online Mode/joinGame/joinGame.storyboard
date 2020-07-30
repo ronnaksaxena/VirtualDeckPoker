@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -37,7 +37,7 @@
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XSA-sN-3LA" userLabel="nameText">
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XSA-sN-3LA" userLabel="nameText">
                                         <rect key="frame" x="91.5" y="0.0" width="150" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="150" id="8As-dA-0M4"/>
@@ -56,7 +56,7 @@
                                         <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gkH-Db-yF5" userLabel="codeText">
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gkH-Db-yF5" userLabel="codeText">
                                         <rect key="frame" x="160.5" y="0.0" width="150" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="150" id="5yZ-ZG-Wa7"/>
@@ -67,7 +67,11 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1gM-Bx-TSm" userLabel="joinButton">
-                                <rect key="frame" x="95.5" y="615.5" width="223" height="71"/>
+                                <rect key="frame" x="57" y="615.5" width="300" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="SGH-oa-ny6"/>
+                                    <constraint firstAttribute="height" constant="100" id="oKW-Z3-kaY"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="50"/>
                                 <state key="normal" title="Join Game">
                                     <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -87,11 +91,18 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Online Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SJr-D4-Y7w">
-                                <rect key="frame" x="129" y="174" width="156" height="35"/>
+                                <rect key="frame" x="129" y="269" width="156" height="35"/>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="30"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Virtual Deck Poker_sata-1" translatesAutoresizingMaskIntoConstraints="NO" id="lPz-Ns-lAr">
+                                <rect key="frame" x="-18" y="64" width="450" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="450" id="ODd-10-c0b"/>
+                                    <constraint firstAttribute="height" constant="200" id="tgm-55-bS6"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -100,14 +111,16 @@
                             <constraint firstItem="KJl-tE-cuc" firstAttribute="top" secondItem="q8s-qx-gMF" secondAttribute="top" constant="20" id="9D5-hy-lA2"/>
                             <constraint firstItem="moM-QX-4eU" firstAttribute="top" secondItem="qg0-qg-O1P" secondAttribute="bottom" constant="70" id="EOh-Om-UTK"/>
                             <constraint firstItem="PO0-2o-I7M" firstAttribute="centerX" secondItem="gUS-Ej-dAk" secondAttribute="centerX" id="Eth-zE-Poh"/>
+                            <constraint firstItem="lPz-Ns-lAr" firstAttribute="top" secondItem="q8s-qx-gMF" secondAttribute="top" constant="20" id="Fn3-tC-kUn"/>
                             <constraint firstItem="1gM-Bx-TSm" firstAttribute="top" secondItem="moM-QX-4eU" secondAttribute="bottom" constant="150" id="HV9-53-qeU">
                                 <variation key="heightClass=compact-widthClass=regular" constant="50"/>
                             </constraint>
                             <constraint firstItem="SJr-D4-Y7w" firstAttribute="centerX" secondItem="gUS-Ej-dAk" secondAttribute="centerX" id="JVO-um-Bom"/>
                             <constraint firstItem="qg0-qg-O1P" firstAttribute="centerX" secondItem="gUS-Ej-dAk" secondAttribute="centerX" id="XaD-tg-TXm"/>
-                            <constraint firstItem="SJr-D4-Y7w" firstAttribute="top" secondItem="q8s-qx-gMF" secondAttribute="top" constant="130" id="ciz-V4-1vx"/>
+                            <constraint firstItem="SJr-D4-Y7w" firstAttribute="top" secondItem="q8s-qx-gMF" secondAttribute="top" constant="225" id="ciz-V4-1vx"/>
                             <constraint firstItem="moM-QX-4eU" firstAttribute="centerY" secondItem="gUS-Ej-dAk" secondAttribute="centerY" id="dyg-Ge-Yna"/>
                             <constraint firstItem="uZe-in-Foj" firstAttribute="leading" secondItem="gUS-Ej-dAk" secondAttribute="leading" id="fEl-c0-HSa"/>
+                            <constraint firstItem="lPz-Ns-lAr" firstAttribute="centerX" secondItem="gUS-Ej-dAk" secondAttribute="centerX" id="jqh-vF-1PB"/>
                             <constraint firstItem="KJl-tE-cuc" firstAttribute="leading" secondItem="q8s-qx-gMF" secondAttribute="leading" constant="20" id="mag-oQ-6Le"/>
                             <constraint firstItem="1gM-Bx-TSm" firstAttribute="top" secondItem="PO0-2o-I7M" secondAttribute="bottom" id="tPK-52-O2z"/>
                             <constraint firstItem="1gM-Bx-TSm" firstAttribute="centerX" secondItem="gUS-Ej-dAk" secondAttribute="centerX" id="ut3-Xu-nVK"/>
@@ -120,7 +133,7 @@
                     <connections>
                         <outlet property="codeText" destination="gkH-Db-yF5" id="EL4-ju-P22"/>
                         <outlet property="errorLabel" destination="PO0-2o-I7M" id="jGI-w9-uKC"/>
-                        <outlet property="joinButton" destination="1gM-Bx-TSm" id="uzi-E4-5EQ"/>
+                        <outlet property="joinButton" destination="1gM-Bx-TSm" id="z44-Ej-KjV"/>
                         <outlet property="nameText" destination="XSA-sN-3LA" id="Kcz-lY-sOn"/>
                     </connections>
                 </viewController>
@@ -149,5 +162,6 @@
     </scenes>
     <resources>
         <image name="51tm8dwiIRL._AC_SX425_" width="425" height="425"/>
+        <image name="Virtual Deck Poker_sata-1" width="2000" height="2000"/>
     </resources>
 </document>

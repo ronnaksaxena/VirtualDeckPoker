@@ -285,6 +285,7 @@ class irlGameTable: UIViewController {
             leaveButton.isHidden = true
             dealButton.isHidden = true
             foldButton.isHidden = true
+            waitingLabel.isHidden = true
             name1.setTitle(inPersonPlayer.name, for: UIControl.State.normal)
             for card in comCards {
                 card?.isHidden = true

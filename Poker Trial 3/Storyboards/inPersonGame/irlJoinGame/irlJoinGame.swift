@@ -22,8 +22,15 @@ class irlJoinGame: UIViewController {
     @IBOutlet weak var errorLabel: UILabel!
     
     
+    @IBOutlet weak var joinButton: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        joinButton.layer.cornerRadius = 10.0
+        joinButton.tintColor = UIColor.white
+        joinButton.layer.borderWidth = 2.0
+        joinButton.layer.borderColor = CGColor.init(srgbRed: 255/255, green: 255/255, blue: 255/255, alpha: 1)
     }
 
     override var shouldAutorotate: Bool {

@@ -83,8 +83,15 @@ var rm = Room(smallBlind: 10, bigBlind: 20, defaultStack: 1000, time: 30, roomPl
     
     @IBOutlet weak var errorLabel: UILabel!
     
+    
+    @IBOutlet weak var createButton: UIButton!
+    
     override func viewDidLoad() {
          super.viewDidLoad()
+        createButton.layer.cornerRadius = 10.0
+        createButton.tintColor = UIColor.white
+        createButton.layer.borderWidth = 2.0
+        createButton.layer.borderColor = CGColor.init(srgbRed: 119/255, green: 136/255, blue: 153/255, alpha: 1)
      }
     
     //creates game and uploades to server when button is pressed

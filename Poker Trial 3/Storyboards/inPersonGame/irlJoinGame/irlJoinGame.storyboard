@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -29,17 +29,23 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UFy-Uu-cOh">
-                                <rect key="frame" x="95.5" y="691" width="223" height="71"/>
+                                <rect key="frame" x="57" y="691" width="300" height="71"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="71" id="XfX-kd-xH8"/>
+                                    <constraint firstAttribute="width" constant="300" id="XoA-ob-MTm"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="50"/>
+                                <size key="titleShadowOffset" width="3" height="0.0"/>
                                 <state key="normal" title="Join Game">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="tapJoin:" destination="DjG-QS-pyD" eventType="touchUpInside" id="IqU-LG-Iul"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In Person Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SVi-lv-Usj">
-                                <rect key="frame" x="109" y="204" width="196" height="35"/>
+                                <rect key="frame" x="109" y="269" width="196" height="35"/>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="30"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -86,7 +92,7 @@
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="76X-Xm-kDC" userLabel="codeText">
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="250" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="76X-Xm-kDC" userLabel="codeText">
                                                 <rect key="frame" x="150" y="0.0" width="150" height="35"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="150" id="vCI-qT-VW2"/>
@@ -108,22 +114,31 @@
                                 <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Virtual Deck Poker_sata-1" translatesAutoresizingMaskIntoConstraints="NO" id="xlj-Iu-l9W">
+                                <rect key="frame" x="-18" y="64" width="450" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="450" id="DRT-de-Zjh"/>
+                                    <constraint firstAttribute="height" constant="200" id="GZG-MZ-S2x"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Kc5-3u-ucU" firstAttribute="bottom" secondItem="UFy-Uu-cOh" secondAttribute="bottom" constant="100" id="0f1-jW-5hr"/>
                             <constraint firstItem="xXF-I5-pGf" firstAttribute="top" secondItem="IuD-wl-vyH" secondAttribute="top" id="1zk-7A-f28"/>
+                            <constraint firstItem="xlj-Iu-l9W" firstAttribute="top" secondItem="Kc5-3u-ucU" secondAttribute="top" constant="20" id="8x3-1d-jju"/>
                             <constraint firstItem="SVi-lv-Usj" firstAttribute="centerX" secondItem="IuD-wl-vyH" secondAttribute="centerX" id="A5I-Cd-I6X"/>
                             <constraint firstItem="Sp2-Ku-cxN" firstAttribute="centerX" secondItem="IuD-wl-vyH" secondAttribute="centerX" id="Au5-M8-WJw"/>
                             <constraint firstAttribute="bottom" secondItem="xXF-I5-pGf" secondAttribute="bottom" id="C7Z-Zb-wss"/>
                             <constraint firstItem="Sp2-Ku-cxN" firstAttribute="centerY" secondItem="IuD-wl-vyH" secondAttribute="centerY" constant="160" id="COD-bI-1TB"/>
                             <constraint firstItem="j4m-RY-rv1" firstAttribute="leading" secondItem="Kc5-3u-ucU" secondAttribute="leading" constant="20" id="GxU-e6-pBT"/>
-                            <constraint firstItem="SVi-lv-Usj" firstAttribute="top" secondItem="Kc5-3u-ucU" secondAttribute="top" constant="160" id="Nc7-tW-dD2"/>
+                            <constraint firstItem="SVi-lv-Usj" firstAttribute="top" secondItem="Kc5-3u-ucU" secondAttribute="top" constant="225" id="Nc7-tW-dD2"/>
                             <constraint firstItem="xXF-I5-pGf" firstAttribute="leading" secondItem="IuD-wl-vyH" secondAttribute="leading" id="S8K-3V-IAS"/>
                             <constraint firstItem="j4m-RY-rv1" firstAttribute="top" secondItem="Kc5-3u-ucU" secondAttribute="top" constant="20" id="SnB-vy-ERq"/>
                             <constraint firstItem="iPJ-om-a1u" firstAttribute="centerY" secondItem="IuD-wl-vyH" secondAttribute="centerY" id="eZL-xw-Yef"/>
                             <constraint firstItem="UFy-Uu-cOh" firstAttribute="centerX" secondItem="IuD-wl-vyH" secondAttribute="centerX" id="ge8-6n-PWG"/>
                             <constraint firstAttribute="trailing" secondItem="xXF-I5-pGf" secondAttribute="trailing" id="pYU-NR-ehA"/>
+                            <constraint firstItem="xlj-Iu-l9W" firstAttribute="centerX" secondItem="IuD-wl-vyH" secondAttribute="centerX" id="vyv-7h-5uA"/>
                             <constraint firstItem="iPJ-om-a1u" firstAttribute="centerX" secondItem="IuD-wl-vyH" secondAttribute="centerX" id="xoC-Sm-YW3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Kc5-3u-ucU"/>
@@ -131,6 +146,7 @@
                     <connections>
                         <outlet property="codeText" destination="76X-Xm-kDC" id="cvH-TE-1Oh"/>
                         <outlet property="errorLabel" destination="Sp2-Ku-cxN" id="kMO-ce-Oib"/>
+                        <outlet property="joinButton" destination="UFy-Uu-cOh" id="EbK-m0-98t"/>
                         <outlet property="nameText" destination="DbG-VB-qOf" id="JbU-Ky-072"/>
                     </connections>
                 </viewController>
@@ -149,5 +165,6 @@
     </scenes>
     <resources>
         <image name="Background" width="414" height="896"/>
+        <image name="Virtual Deck Poker_sata-1" width="2000" height="2000"/>
     </resources>
 </document>
