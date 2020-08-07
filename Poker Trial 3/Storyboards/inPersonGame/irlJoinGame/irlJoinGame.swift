@@ -76,21 +76,31 @@ class irlJoinGame: UIViewController {
                         inPersonPlayers = p
                         inPersonRm = irlRoom(players: inPersonPlayers)
                         
-                        
-                        //checks to see if room is full
-                        if inPersonRm.roomPlayers.count < 10 {
-                            inPersonRm.addPlayer(name: name)
-                            inPersonRm.roomCode = key
-                            inPersonPlayer = irlPlayer(name: name, isHost: "false")
-                            ref.child(key).child("roomPlayers").setValue(inPersonPlayers)
-                            
-                            //segues to storyboard reference for gameTable
-                            let storyboard = UIStoryboard(name: "irlJoinGame", bundle: nil)
-                            let myVC = storyboard.instantiateViewController(withIdentifier: "irlGameTable")
-                            self.present(myVC, animated: true, completion: nil)
+                        var hasDuplicate:Bool = false
+                        for player in inPersonPlayers {
+                            if player["name"] == name {
+                                hasDuplicate = true
+                            }
+                        }
+                        if hasDuplicate {
+                            self.errorLabel.text = "Name is taken\n"
                         }
                         else {
-                            self.errorLabel.text = "Can't join, room is full"
+                            //checks to see if room is full
+                            if (inPersonRm.roomPlayers.count < 10) {
+                                inPersonRm.addPlayer(name: name)
+                                inPersonRm.roomCode = key
+                                inPersonPlayer = irlPlayer(name: name, isHost: "false")
+                                ref.child(key).child("roomPlayers").setValue(inPersonPlayers)
+                                
+                                //segues to storyboard reference for gameTable
+                                let storyboard = UIStoryboard(name: "irlJoinGame", bundle: nil)
+                                let myVC = storyboard.instantiateViewController(withIdentifier: "irlGameTable")
+                                self.present(myVC, animated: true, completion: nil)
+                            }
+                            else {
+                                self.errorLabel.text = "Can't join, room is full"
+                            }
                         }
                     }
                 }

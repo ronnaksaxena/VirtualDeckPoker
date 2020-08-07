@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--leaveWarning-->
+        <scene sceneID="fz5-Qw-Lvq">
+            <objects>
+                <viewController storyboardIdentifier="leaveWarning" useStoryboardIdentifierAsRestorationIdentifier="YES" id="0ct-Sf-vD5" userLabel="leaveWarning" customClass="leaveWarning" customModule="Poker_Trial_3" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CRU-Md-XkD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blank-white-square-thumbnail" translatesAutoresizingMaskIntoConstraints="NO" id="LC5-5V-wmx">
+                                <rect key="frame" x="32" y="291" width="350" height="350"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="350" id="R09-Ba-RUG"/>
+                                    <constraint firstAttribute="width" constant="350" id="v5P-9a-mfa"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Are you sure you want to leave?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zHf-95-apa">
+                                <rect key="frame" x="32" y="291" width="350" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="350" id="Qrs-cl-QBe"/>
+                                    <constraint firstAttribute="height" constant="200" id="gT1-fC-FTd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="30"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="8fe-Th-Jzd">
+                                <rect key="frame" x="107" y="521" width="200" height="47"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wAt-b5-Z9c">
+                                        <rect key="frame" x="0.0" y="0.0" width="70" height="47"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="70" id="TUn-Ez-A3l"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="30"/>
+                                        <size key="titleShadowOffset" width="3" height="0.0"/>
+                                        <state key="normal" title="No">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="ChR-ha-EX4" kind="show" id="kb7-av-4FT"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DQR-B6-zcj">
+                                        <rect key="frame" x="130" y="0.0" width="70" height="47"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="70" id="JxP-Se-qTE"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="30"/>
+                                        <size key="titleShadowOffset" width="3" height="0.0"/>
+                                        <state key="normal" title="Yes">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="tapYes:" destination="0ct-Sf-vD5" eventType="touchUpInside" id="ZOO-9Y-CCD"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="8fe-Th-Jzd" firstAttribute="top" secondItem="zHf-95-apa" secondAttribute="bottom" constant="30" id="FyK-qd-ZRh"/>
+                            <constraint firstItem="zHf-95-apa" firstAttribute="centerY" secondItem="CRU-Md-XkD" secondAttribute="centerY" constant="-57" id="POO-Go-3Ji"/>
+                            <constraint firstItem="LC5-5V-wmx" firstAttribute="centerY" secondItem="CRU-Md-XkD" secondAttribute="centerY" constant="18" id="Tw5-el-Qyc"/>
+                            <constraint firstItem="8fe-Th-Jzd" firstAttribute="centerX" secondItem="CRU-Md-XkD" secondAttribute="centerX" id="l1O-nd-Dyc"/>
+                            <constraint firstItem="LC5-5V-wmx" firstAttribute="centerX" secondItem="CRU-Md-XkD" secondAttribute="centerX" id="nCb-XZ-VTt"/>
+                            <constraint firstItem="zHf-95-apa" firstAttribute="centerX" secondItem="CRU-Md-XkD" secondAttribute="centerX" id="vbD-H9-1Yf"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gUf-YX-3lz"/>
+                    </view>
+                    <connections>
+                        <outlet property="noButton" destination="wAt-b5-Z9c" id="95Y-Fp-oOm"/>
+                        <outlet property="whiteBackground" destination="LC5-5V-wmx" id="F1l-Ox-erW"/>
+                        <outlet property="yesButton" destination="DQR-B6-zcj" id="f8E-Ml-pAn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FN4-tK-s3V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1344" y="168"/>
+        </scene>
+        <!--irlGameTable-->
+        <scene sceneID="Dfk-Ji-JfY">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="irlGameTable" storyboardName="irlGameTable" referencedIdentifier="irlGameTable" id="ChR-ha-EX4" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="A3N-Ir-t4Z"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iLf-W2-jmn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2069" y="33"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="HI3-wT-9ax">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="Main" storyboardName="Main" referencedIdentifier="Main" id="QNb-ec-CBu" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZLO-cY-ACI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2122" y="179"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="blank-white-square-thumbnail" width="900" height="900"/>
+    </resources>
+</document>

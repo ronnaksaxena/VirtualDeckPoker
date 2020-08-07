@@ -243,6 +243,7 @@ class irlGameTable: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("isHost is \(inPersonPlayer.isHost)")
         //(218,165,32) golden rod
         //(139,0,0) dark red
         //(65,105,225) royal blue
@@ -377,9 +378,14 @@ class irlGameTable: UIViewController {
         ref.child(inPersonRm.roomCode).child("roomPlayers").setValue(inPersonPlayers)
     }
     
+    
+    
+    
     /*let database = Database.database().reference()
     lazy var rmRef = database.child(inPersonRm.roomCode)
     rmRef.observeEventType(.ChildChanged, withBlock: { (snapshot) -> Void in
         
     })*/
 }
+
+

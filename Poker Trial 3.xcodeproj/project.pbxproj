@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		512CBFA524D75A42001C7B43 /* settingsView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 512CBFA424D75A42001C7B43 /* settingsView.storyboard */; };
+		512F4FBE24D76D5D00887215 /* leaveWarning.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 512F4FBD24D76D5D00887215 /* leaveWarning.storyboard */; };
+		512F4FC024D76D9E00887215 /* leaveWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512F4FBF24D76D9E00887215 /* leaveWarning.swift */; };
 		513B89DE24CB6E8A00FC24B8 /* inPerson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513B89DD24CB6E8A00FC24B8 /* inPerson.swift */; };
 		513B89E024CB6EA200FC24B8 /* online.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513B89DF24CB6EA200FC24B8 /* online.swift */; };
 		513B89E324CCC57100FC24B8 /* irlJoinGame.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 513B89E224CCC57100FC24B8 /* irlJoinGame.storyboard */; };
@@ -15,6 +18,11 @@
 		513B89EB24CCC9C300FC24B8 /* irlCreateGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513B89EA24CCC9C300FC24B8 /* irlCreateGame.swift */; };
 		513B89EE24CCD3BF00FC24B8 /* irlGameTable.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 513B89ED24CCD3BF00FC24B8 /* irlGameTable.storyboard */; };
 		513B89F224CCD40600FC24B8 /* irlGameTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 513B89F124CCD40500FC24B8 /* irlGameTable.swift */; };
+		514CB67624D4B67B002AE4C8 /* settingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514CB67524D4B67B002AE4C8 /* settingsView.swift */; };
+		514CB67824D4CE96002AE4C8 /* removeWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514CB67724D4CE96002AE4C8 /* removeWarning.swift */; };
+		514CB67A24D4CEC4002AE4C8 /* hostWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514CB67924D4CEC4002AE4C8 /* hostWarning.swift */; };
+		514CB67C24D750E4002AE4C8 /* removeWarning.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 514CB67B24D750E4002AE4C8 /* removeWarning.storyboard */; };
+		514CB67E24D75107002AE4C8 /* hostWarning.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 514CB67D24D75107002AE4C8 /* hostWarning.storyboard */; };
 		519E7073249558D80038B1D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519E7072249558D80038B1D7 /* AppDelegate.swift */; };
 		519E7075249558D80038B1D7 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 519E7074249558D80038B1D7 /* GameScene.sks */; };
 		519E7077249558D80038B1D7 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 519E7076249558D80038B1D7 /* Actions.sks */; };
@@ -35,6 +43,9 @@
 
 /* Begin PBXFileReference section */
 		204E68B00581CC6DBEDBF839 /* Pods_Poker_Trial_3.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Poker_Trial_3.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		512CBFA424D75A42001C7B43 /* settingsView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = settingsView.storyboard; sourceTree = "<group>"; };
+		512F4FBD24D76D5D00887215 /* leaveWarning.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = leaveWarning.storyboard; sourceTree = "<group>"; };
+		512F4FBF24D76D9E00887215 /* leaveWarning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = leaveWarning.swift; sourceTree = "<group>"; };
 		513B89DD24CB6E8A00FC24B8 /* inPerson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = inPerson.swift; sourceTree = "<group>"; };
 		513B89DF24CB6EA200FC24B8 /* online.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = online.swift; sourceTree = "<group>"; };
 		513B89E224CCC57100FC24B8 /* irlJoinGame.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = irlJoinGame.storyboard; sourceTree = "<group>"; };
@@ -43,6 +54,11 @@
 		513B89EA24CCC9C300FC24B8 /* irlCreateGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = irlCreateGame.swift; sourceTree = "<group>"; };
 		513B89ED24CCD3BF00FC24B8 /* irlGameTable.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = irlGameTable.storyboard; sourceTree = "<group>"; };
 		513B89F124CCD40500FC24B8 /* irlGameTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = irlGameTable.swift; sourceTree = "<group>"; };
+		514CB67524D4B67B002AE4C8 /* settingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingsView.swift; sourceTree = "<group>"; };
+		514CB67724D4CE96002AE4C8 /* removeWarning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = removeWarning.swift; sourceTree = "<group>"; };
+		514CB67924D4CEC4002AE4C8 /* hostWarning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hostWarning.swift; sourceTree = "<group>"; };
+		514CB67B24D750E4002AE4C8 /* removeWarning.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = removeWarning.storyboard; sourceTree = "<group>"; };
+		514CB67D24D75107002AE4C8 /* hostWarning.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = hostWarning.storyboard; sourceTree = "<group>"; };
 		519E706F249558D80038B1D7 /* Poker Trial 3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Poker Trial 3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		519E7072249558D80038B1D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		519E7074249558D80038B1D7 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -136,6 +152,14 @@
 			children = (
 				513B89ED24CCD3BF00FC24B8 /* irlGameTable.storyboard */,
 				513B89F124CCD40500FC24B8 /* irlGameTable.swift */,
+				514CB67524D4B67B002AE4C8 /* settingsView.swift */,
+				514CB67724D4CE96002AE4C8 /* removeWarning.swift */,
+				514CB67924D4CEC4002AE4C8 /* hostWarning.swift */,
+				514CB67B24D750E4002AE4C8 /* removeWarning.storyboard */,
+				514CB67D24D75107002AE4C8 /* hostWarning.storyboard */,
+				512CBFA424D75A42001C7B43 /* settingsView.storyboard */,
+				512F4FBD24D76D5D00887215 /* leaveWarning.storyboard */,
+				512F4FBF24D76D9E00887215 /* leaveWarning.swift */,
 			);
 			path = irlGameTable;
 			sourceTree = "<group>";
@@ -283,12 +307,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				513B89E324CCC57100FC24B8 /* irlJoinGame.storyboard in Resources */,
+				512F4FBE24D76D5D00887215 /* leaveWarning.storyboard in Resources */,
+				514CB67E24D75107002AE4C8 /* hostWarning.storyboard in Resources */,
 				519E707E249558D80038B1D7 /* Main.storyboard in Resources */,
 				513B89E924CCC9AF00FC24B8 /* irlCreateGame.storyboard in Resources */,
 				513B89EE24CCD3BF00FC24B8 /* irlGameTable.storyboard in Resources */,
+				514CB67C24D750E4002AE4C8 /* removeWarning.storyboard in Resources */,
 				519E70992495713F0038B1D7 /* GoogleService-Info.plist in Resources */,
 				519E709524955E230038B1D7 /* createGame.storyboard in Resources */,
 				519E7075249558D80038B1D7 /* GameScene.sks in Resources */,
+				512CBFA524D75A42001C7B43 /* settingsView.storyboard in Resources */,
 				519E708F24955DE20038B1D7 /* joinGame.storyboard in Resources */,
 				519E709B24994FC30038B1D7 /* gameTable.storyboard in Resources */,
 				519E7080249558DA0038B1D7 /* Assets.xcassets in Resources */,
@@ -348,6 +376,8 @@
 			files = (
 				519E7079249558D80038B1D7 /* GameScene.swift in Sources */,
 				513B89E524CCC59100FC24B8 /* irlJoinGame.swift in Sources */,
+				514CB67A24D4CEC4002AE4C8 /* hostWarning.swift in Sources */,
+				514CB67824D4CE96002AE4C8 /* removeWarning.swift in Sources */,
 				519E707B249558D80038B1D7 /* GameViewController.swift in Sources */,
 				519E709E24994FE80038B1D7 /* gameTable.swift in Sources */,
 				519E7073249558D80038B1D7 /* AppDelegate.swift in Sources */,
@@ -355,6 +385,8 @@
 				513B89F224CCD40600FC24B8 /* irlGameTable.swift in Sources */,
 				519E709324955E100038B1D7 /* joinGame.swift in Sources */,
 				519E709724955E330038B1D7 /* createGame.swift in Sources */,
+				512F4FC024D76D9E00887215 /* leaveWarning.swift in Sources */,
+				514CB67624D4B67B002AE4C8 /* settingsView.swift in Sources */,
 				513B89DE24CB6E8A00FC24B8 /* inPerson.swift in Sources */,
 				513B89EB24CCC9C300FC24B8 /* irlCreateGame.swift in Sources */,
 			);

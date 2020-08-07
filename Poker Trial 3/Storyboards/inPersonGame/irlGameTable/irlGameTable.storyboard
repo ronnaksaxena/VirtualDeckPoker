@@ -30,6 +30,9 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <segue destination="k9R-NF-Vsb" kind="show" id="4Zx-h8-0Rw"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ixN-ua-hXR">
                                 <rect key="frame" x="20" y="64" width="125" height="47"/>
@@ -43,6 +46,9 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <segue destination="bLL-LK-2bQ" kind="show" id="YpN-bx-WMH"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="poker-table-png-5" translatesAutoresizingMaskIntoConstraints="NO" id="hTi-Vj-kTb">
                                 <rect key="frame" x="7" y="198" width="400" height="200"/>
@@ -334,6 +340,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fAJ-yP-Ozz"/>
                     </view>
+                    <navigationItem key="navigationItem" id="uYS-0t-tSc"/>
                     <connections>
                         <outlet property="card1" destination="nhk-Un-w9S" id="2kc-ti-Djf"/>
                         <outlet property="card2" destination="Qoc-DO-wzd" id="f8V-fI-MQY"/>
@@ -365,6 +372,36 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XmJ-At-BKo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="250.72463768115944" y="130.58035714285714"/>
+        </scene>
+        <!--leaveWarning-->
+        <scene sceneID="UMh-b1-gAI">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="leaveWarning" storyboardName="leaveWarning" referencedIdentifier="leaveWarning" id="bLL-LK-2bQ" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="qfr-Tt-QpZ"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2HJ-IJ-RVF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="696" y="-280"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="KrN-KD-Lif">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="Main" storyboardName="Main" referencedIdentifier="Main" id="QSK-By-fsG" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Tb1-4T-OgW"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nMa-0P-0IU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="924" y="-224"/>
+        </scene>
+        <!--settingsView-->
+        <scene sceneID="jLQ-PQ-3rZ">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="settingsView" storyboardName="settingsView" referencedIdentifier="settingsView" id="k9R-NF-Vsb" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="IKg-mW-8cG"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="D8i-tX-1f7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="942" y="-58"/>
         </scene>
     </scenes>
     <resources>

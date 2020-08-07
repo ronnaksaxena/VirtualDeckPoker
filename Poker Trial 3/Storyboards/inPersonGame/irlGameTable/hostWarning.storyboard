@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--hostWarning-->
+        <scene sceneID="l6C-AE-pjo">
+            <objects>
+                <viewController storyboardIdentifier="hostWarning" id="bha-Te-NNJ" userLabel="hostWarning" customClass="hostWarning" customModule="Poker_Trial_3" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tgM-DN-zBy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blank-white-square-thumbnail" translatesAutoresizingMaskIntoConstraints="NO" id="Nd0-Rm-eLh">
+                                <rect key="frame" x="32" y="273" width="350" height="350"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="350" id="lHB-KU-ttX"/>
+                                    <constraint firstAttribute="width" constant="350" id="mle-P2-X5E"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Are you sure you want to make [player] host?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f9m-qr-vpi">
+                                <rect key="frame" x="32" y="273" width="350" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="350" id="9yM-Mu-xcF"/>
+                                    <constraint firstAttribute="height" constant="200" id="Rh7-XD-5Mz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="30"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="awE-wk-Oxx">
+                                <rect key="frame" x="107" y="503" width="200" height="47"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FPF-3A-dMN">
+                                        <rect key="frame" x="0.0" y="0.0" width="70" height="47"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="70" id="Cox-q4-wPz"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="30"/>
+                                        <size key="titleShadowOffset" width="3" height="0.0"/>
+                                        <state key="normal" title="No">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="tapNoButton:" destination="bha-Te-NNJ" eventType="touchUpInside" id="bXh-PA-soT"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kib-CY-hsx">
+                                        <rect key="frame" x="130" y="0.0" width="70" height="47"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="70" id="phd-rG-BZ2"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="30"/>
+                                        <size key="titleShadowOffset" width="3" height="0.0"/>
+                                        <state key="normal" title="Yes">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="tapYesButton:" destination="bha-Te-NNJ" eventType="touchUpInside" id="Z5G-l6-teG"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="awE-wk-Oxx" firstAttribute="top" secondItem="f9m-qr-vpi" secondAttribute="bottom" constant="30" id="5zw-7o-Ncb"/>
+                            <constraint firstItem="awE-wk-Oxx" firstAttribute="centerX" secondItem="tgM-DN-zBy" secondAttribute="centerX" id="LzP-k0-Z9S"/>
+                            <constraint firstItem="Nd0-Rm-eLh" firstAttribute="centerY" secondItem="tgM-DN-zBy" secondAttribute="centerY" id="asO-HB-hdL"/>
+                            <constraint firstItem="f9m-qr-vpi" firstAttribute="centerX" secondItem="tgM-DN-zBy" secondAttribute="centerX" id="mmH-ik-Ip1"/>
+                            <constraint firstItem="Nd0-Rm-eLh" firstAttribute="centerX" secondItem="tgM-DN-zBy" secondAttribute="centerX" id="vIq-je-Fqa"/>
+                            <constraint firstItem="f9m-qr-vpi" firstAttribute="centerY" secondItem="tgM-DN-zBy" secondAttribute="centerY" constant="-75" id="vWg-0F-fFt"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="pyw-aK-249"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="9KC-QO-KIh"/>
+                    <connections>
+                        <outlet property="noButton" destination="FPF-3A-dMN" id="ALI-Jf-o36"/>
+                        <outlet property="warningLabel" destination="f9m-qr-vpi" id="N7M-ev-WMa"/>
+                        <outlet property="whiteBlock" destination="Nd0-Rm-eLh" id="IIZ-t7-v0A"/>
+                        <outlet property="yesButton" destination="Kib-CY-hsx" id="xWs-XE-mOy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2EF-Zd-5SM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1786" y="395"/>
+        </scene>
+        <!--irlGameTable-->
+        <scene sceneID="dlO-hY-CLK">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="irlGameTable" storyboardName="irlGameTable" referencedIdentifier="irlGameTable" id="udG-UN-l62" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QmV-EG-2eE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2352" y="189"/>
+        </scene>
+        <!--settingsView-->
+        <scene sceneID="8as-tt-tYg">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="settingsView" storyboardName="settingsView" referencedIdentifier="settingsView" id="LzI-nA-CzP" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G5L-UL-c7j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2449" y="292"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="blank-white-square-thumbnail" width="900" height="900"/>
+    </resources>
+</document>

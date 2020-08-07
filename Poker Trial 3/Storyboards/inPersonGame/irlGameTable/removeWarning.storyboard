@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--removeWarning-->
+        <scene sceneID="BDk-v7-rFi">
+            <objects>
+                <viewController storyboardIdentifier="removeWarning" id="c0M-mu-frI" userLabel="removeWarning" customClass="removeWarning" customModule="Poker_Trial_3" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8Nb-YQ-KF6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blank-white-square-thumbnail" translatesAutoresizingMaskIntoConstraints="NO" id="4oX-qK-Odn">
+                                <rect key="frame" x="32" y="273" width="350" height="350"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="350" id="8Sx-gi-WUb"/>
+                                    <constraint firstAttribute="height" constant="350" id="pUf-3E-OuZ"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Are you sure you want to remove [player]?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TJO-Um-XVL">
+                                <rect key="frame" x="32" y="273" width="350" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="QCF-H4-y9q"/>
+                                    <constraint firstAttribute="width" constant="350" id="d5A-lD-rx4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="25"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="TSc-3o-hjx">
+                                <rect key="frame" x="107" y="503" width="200" height="47"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PjX-9Y-CRU">
+                                        <rect key="frame" x="0.0" y="0.0" width="70" height="47"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="70" id="GAW-SG-Md6"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="30"/>
+                                        <size key="titleShadowOffset" width="3" height="0.0"/>
+                                        <state key="normal" title="No">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="tapNo:" destination="c0M-mu-frI" eventType="touchUpInside" id="KXc-Ph-687"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DpS-fF-hdl">
+                                        <rect key="frame" x="130" y="0.0" width="70" height="47"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="70" id="CXq-aw-ngo"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="30"/>
+                                        <size key="titleShadowOffset" width="3" height="0.0"/>
+                                        <state key="normal" title="Yes">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="tapYes:" destination="c0M-mu-frI" eventType="touchUpInside" id="Qxn-EH-CEb"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="TSc-3o-hjx" firstAttribute="centerX" secondItem="8Nb-YQ-KF6" secondAttribute="centerX" id="ClB-Rf-FhQ"/>
+                            <constraint firstItem="TJO-Um-XVL" firstAttribute="centerX" secondItem="8Nb-YQ-KF6" secondAttribute="centerX" id="Sbl-nB-2p8"/>
+                            <constraint firstItem="4oX-qK-Odn" firstAttribute="centerY" secondItem="8Nb-YQ-KF6" secondAttribute="centerY" id="jg3-dY-fxd"/>
+                            <constraint firstItem="TSc-3o-hjx" firstAttribute="top" secondItem="TJO-Um-XVL" secondAttribute="bottom" constant="30" id="jri-oq-Xwh"/>
+                            <constraint firstItem="TJO-Um-XVL" firstAttribute="centerY" secondItem="8Nb-YQ-KF6" secondAttribute="centerY" constant="-75" id="t93-Rg-4aD"/>
+                            <constraint firstItem="4oX-qK-Odn" firstAttribute="centerX" secondItem="8Nb-YQ-KF6" secondAttribute="centerX" id="zk6-nr-0ZM"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="eJS-hY-tjb"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="B75-qG-yqb"/>
+                    <connections>
+                        <outlet property="noButton" destination="PjX-9Y-CRU" id="7vL-VK-Sad"/>
+                        <outlet property="warningLabel" destination="TJO-Um-XVL" id="4YH-Fj-Eh6"/>
+                        <outlet property="whiteBlock" destination="4oX-qK-Odn" id="Lw1-Qb-4DY"/>
+                        <outlet property="yesButton" destination="DpS-fF-hdl" id="laS-DH-cOW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="huQ-ra-yj6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="557" y="-58"/>
+        </scene>
+        <!--settingsView-->
+        <scene sceneID="Dei-ZH-yDw">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="settingsView" storyboardName="settingsView" referencedIdentifier="settingsView" id="3d7-Io-EQ8" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dEj-8Z-bky" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1236" y="-150"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="blank-white-square-thumbnail" width="900" height="900"/>
+    </resources>
+</document>
