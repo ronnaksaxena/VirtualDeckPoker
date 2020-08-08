@@ -183,7 +183,18 @@ func cardToString(card:Card) ->String {
     return cardString
 }
 
+// UIImage+Alpha.swift
 
+extension UIImage {
+
+    func alpha(_ value:CGFloat) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(size, false, scale)
+        draw(at: CGPoint.zero, blendMode: .normal, alpha: value)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage!
+    }
+}
 
 class irlGameTable: UIViewController {
     
@@ -243,7 +254,9 @@ class irlGameTable: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("isHost is \(inPersonPlayer.isHost)")
+        // reference to server
+        let ref = Database.database().reference()
+        
         //(218,165,32) golden rod
         //(139,0,0) dark red
         //(65,105,225) royal blue
@@ -308,6 +321,7 @@ class irlGameTable: UIViewController {
             roomCode.text = "Room Code:\n\(inPersonRm.roomCode)"
             dealButton.isHidden = true
             handLabel.isHidden = true
+            //puts everyone's names around the table
             for i in stride(from: 0, through: 9, by: 1) {
                 names[i]?.isHidden = true
             }
@@ -319,7 +333,111 @@ class irlGameTable: UIViewController {
                 }
                 names[i]?.setTitle(name, for: UIControl.State.normal)
             }
+            //checks for folded players
+            let names = [name1, name2, name3, name4, name5, name6, name7, name8, name9, name10]
+            for i in stride(from: 0, to: inPersonPlayers.count, by: 1) {
+                if inPersonPlayers[i]["isFolded"] == "true" {
+                    for j in stride(from: 0, to: names.count, by: 1) {
+                        if names[j]?.titleLabel?.text == inPersonPlayers[i]["name"] {
+                            names[j]?.isHidden = true
+                        }
+                    }
+                }
+            }
         }
+        
+        //check if game started
+        ref.child(inPersonRm.roomCode).child("gameStarted").observe(.value, with: { firDataSnapshot in
+            guard let val = firDataSnapshot.value as? String else {
+                return
+            }
+            inPersonRm.gameStarted = val
+            if inPersonRm.gameStarted == "true" {
+                self.waitingLabel.isHidden = true
+                self.foldButton.isHidden = false
+            }
+        })
+        
+        //observes if player was removed
+        ref.child(inPersonRm.roomCode).child("roomPlayers").observe(.childRemoved, with: { firDataSnapshot in
+            var wasRemoved:Bool = true
+            ref.child(inPersonRm.roomCode).child("roomPlayers").observeSingleEvent(of: .value, with: { (snapshot) in
+                guard let playersCopy = snapshot.value as? [[String:String]] else {
+                    print("messed up")
+                    return
+                }
+                inPersonPlayers = playersCopy
+                print(inPersonPlayers)
+                for player in inPersonPlayers {
+                    if player["name"] == inPersonPlayer.name {
+                        wasRemoved = false
+                    }
+                }
+                //segues to Main if you were player removed
+                if wasRemoved == true {
+                    let storyboard = UIStoryboard(name: "irlGameTable", bundle: nil)
+                    let myVC = storyboard.instantiateViewController(withIdentifier: "Main")
+                    self.present(myVC, animated: true, completion: nil)
+                }
+                
+                //updates names
+                let names = [self.name1, self.name2, self.name3, self.name4, self.name5, self.name6, self.name7, self.name8, self.name9, self.name10]
+                for i in stride(from: 0, through: 9, by: 1) {
+                    names[i]?.isHidden = true
+                }
+                for i in stride(from: 0, through: inPersonPlayers.count - 1, by: 1) {
+                    names[i]?.isHidden = false
+                    guard let name = inPersonPlayers[i]["name"] else {
+                        print("Error here")
+                        return
+                    }
+                    names[i]?.setTitle(name, for: UIControl.State.normal)
+                }
+            })
+            
+        })
+        
+        //observes players: if theres a new hand, new host, or player folds
+        ref.child(inPersonRm.roomCode).child("roomPlayers").observe(.childChanged, with: { firDataSnapshot in
+            ref.child(inPersonRm.roomCode).child("roomPlayers").observeSingleEvent(of: .value, with: { (snapshot) in
+                let playersCopy = snapshot.value as? [[String:String]]
+                //checks to see if change was new host
+                for i in stride(from: 0, to: inPersonPlayers.count, by: 1) {
+                    if playersCopy?[i]["name"] == inPersonPlayer.name{
+                        if playersCopy?[i]["isHost"] == "true" {
+                            self.leaveButton.isHidden = true
+                            self.waitingLabel.isHidden = true
+                            self.settingsButton.isHidden = false
+                            self.handButton.isHidden = false
+                            if inPersonRm.gameStarted == "true" {
+                                self.dealButton.isHidden = false
+                            }
+                        }
+                    }
+                }
+                //checks to see if new change was a fold
+                let names = [self.name1, self.name2, self.name3, self.name4, self.name5, self.name6, self.name7, self.name8, self.name9, self.name10]
+                guard let updatedPlayers = playersCopy else{return}
+                for i in stride(from: 0, to: updatedPlayers.count, by: 1) {
+                    if updatedPlayers[i]["isFolded"] == "true" {
+                        for j in stride(from: 0, to: names.count, by: 1) {
+                            if names[j]?.titleLabel?.text == updatedPlayers[i]["name"] {
+                                names[j]?.isHidden = true
+                            }
+                        }
+                    }
+                }
+            })
+
+            
+            //updates inPersonPlayers
+            ref.child(inPersonRm.roomCode).child("roomPlayers").observeSingleEvent(of: .value, with: { (snapshot) in
+                guard let playersCopy = snapshot.value as? [[String:String]] else {
+                    return
+                }
+                inPersonPlayers = playersCopy
+            })
+        })
         
     }
 
@@ -357,35 +475,81 @@ class irlGameTable: UIViewController {
             ref.child(inPersonRm.roomCode).child("gameStarted").setValue("true")
         }
         
-        //changes cards on screen to random drawn cards
-        let c1:Card = rmDeck.drawCard() ?? Card(suit: Suit.Diamond, rank: Rank.Two)
-        let c2:Card = rmDeck.drawCard() ?? Card(suit: Suit.Diamond, rank: Rank.Two)
-        let cardString1 = cardToString(card:c1)
-        let cardString2 = cardToString(card:c2)
-        card1.image = UIImage(named: cardString1)
-        card2.image = UIImage(named: cardString2)
         
-        //updates variables
-        inPersonPlayer.card1 = c1
-        inPersonPlayer.card2 = c2
-        for i in stride(from: 0, through: inPersonPlayers.count - 1, by: 1) {
-            if inPersonPlayers[i]["isHost"] == "true" {
-                inPersonPlayers[i]["card1"] = cardString1
-                inPersonPlayers[i]["card2"] = cardString2
+        //gives all players cards, updates UI, updates server
+        for i in stride(from: 0, to: inPersonPlayers.count, by: 1) {
+            let c1:Card = rmDeck.drawCard() ?? Card(suit: Suit.Diamond, rank: Rank.Two)
+            let c2:Card = rmDeck.drawCard() ?? Card(suit: Suit.Diamond, rank: Rank.Two)
+            let cardString1 = cardToString(card:c1)
+            let cardString2 = cardToString(card:c2)
+            inPersonPlayers[i]["card1"] = cardString1
+            inPersonPlayers[i]["card2"] = cardString2
+            if inPersonPlayer.name == inPersonPlayers[i]["name"] {
+                card1.image = UIImage(named: cardString1)
+                card2.image = UIImage(named: cardString2)
+                inPersonPlayer.card1 = c1
+                inPersonPlayer.card2 = c2
             }
         }
+        
         let ref = Database.database().reference()
         ref.child(inPersonRm.roomCode).child("roomPlayers").setValue(inPersonPlayers)
     }
     
+    func getGreyImage(myImage:UIImage) -> UIImage {
+        guard let currentCGImage = myImage.cgImage else { return myImage}
+        let currentCIImage = CIImage(cgImage: currentCGImage)
+
+        let filter = CIFilter(name: "CIColorMonochrome")
+        filter?.setValue(currentCIImage, forKey: "inputImage")
+
+        // set a gray value for the tint color
+        filter?.setValue(CIColor(red: 0.5, green: 0.5, blue: 0.5), forKey: "inputColor")
+
+        filter?.setValue(1.0, forKey: "inputIntensity")
+        guard let outputImage = filter?.outputImage else { return myImage}
+
+        let context = CIContext()
+
+        if let cgimg = context.createCGImage(outputImage, from: outputImage.extent) {
+            let processedImage = UIImage(cgImage: cgimg)
+            return processedImage
+        }
+        return myImage
+    }
     
     
     
-    /*let database = Database.database().reference()
-    lazy var rmRef = database.child(inPersonRm.roomCode)
-    rmRef.observeEventType(.ChildChanged, withBlock: { (snapshot) -> Void in
+    @IBAction func tapFold(_ sender: Any) {
+        //make cards grey and transparent
+        guard let grey1 = card1.image else {return}
+        let card1Grey = getGreyImage(myImage: grey1)
+        card1.image = card1Grey.alpha(0.5)
+        guard let grey2 = card2.image else {return}
+        let card2Grey = getGreyImage(myImage: grey2)
+        card2.image = card2Grey.alpha(0.5)
         
-    })*/
+        //update variables & server
+        inPersonPlayer.isFolded = "true"
+        for i in stride(from: 0, to: inPersonPlayers.count, by: 1) {
+            if inPersonPlayers[i]["name"] == inPersonPlayer.name {
+                inPersonPlayers[i]["isFolded"] = "true"
+            }
+        }
+        let ref = Database.database().reference()
+        ref.child(inPersonRm.roomCode).child("roomPlayers").setValue(inPersonPlayers)
+        
+        //update players at table
+        let names = [name1, name2, name3, name4, name5, name6, name7, name8, name9, name10]
+        for i in stride(from: 0, through: 9, by: 1) {
+            if names[i]?.titleLabel?.text == inPersonPlayer.name {
+                names[i]?.isHidden = true
+            }
+        }
+    }
+    
+    
 }
+
 
 

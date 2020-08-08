@@ -69,20 +69,21 @@ class hostWarning: UIViewController {
     }
     
     @IBAction func tapYesButton(_ sender: Any) {
+        var playersCopy = inPersonPlayers
         // makes other player host and makes user not host
         for i in stride(from: 0, to: inPersonPlayers.count, by: 1) {
-            if inPersonPlayers[i]["isHost"] == "true" {
-                inPersonPlayers[i]["isHost"] = "false"
+            if playersCopy[i]["isHost"] == "true" {
+                playersCopy[i]["isHost"] = "false"
             }
-            if inPersonPlayers[i]["name"] == selectedPlayer {
-                inPersonPlayers[i]["isHost"] = "true"
+            if playersCopy[i]["name"] == selectedPlayer {
+                playersCopy[i]["isHost"] = "true"
             }
         }
         //updates global variables
         inPersonPlayer.isHost = "false"
         //updates server
         let ref = Database.database().reference()
-        ref.child(inPersonRm.roomCode).child("roomPlayers").setValue(inPersonPlayers)
+        ref.child(inPersonRm.roomCode).child("roomPlayers").setValue(playersCopy)
         //segues back to settings
         let storyboard = UIStoryboard(name: "hostWarning", bundle: nil)
         let myVC = storyboard.instantiateViewController(withIdentifier: "irlGameTable")

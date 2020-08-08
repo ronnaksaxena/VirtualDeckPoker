@@ -71,10 +71,14 @@ class irlJoinGame: UIViewController {
                         guard let p = roomData?["roomPlayers"] as? [[String:String]] else {
                             return
                         }
+                        guard let c = roomData?["comCards"] as? [String] else {
+                            return
+                        }
                         
                         //recieves global variables
                         inPersonPlayers = p
                         inPersonRm = irlRoom(players: inPersonPlayers)
+                        inPersonRm.comCards = c
                         
                         var hasDuplicate:Bool = false
                         for player in inPersonPlayers {

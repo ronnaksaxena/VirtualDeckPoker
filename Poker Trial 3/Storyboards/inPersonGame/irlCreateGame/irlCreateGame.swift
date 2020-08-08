@@ -18,11 +18,11 @@ struct irlPlayer {
     var isHost:String
     var card1:Card?
     var card2:Card?
-    var folds:String
+    var isFolded:String
     init (name:String, isHost:String) {
         self.name = name
         self.isHost = isHost
-        self.folds = "0"
+        self.isFolded = "false"
     }
 }
 
@@ -31,11 +31,12 @@ struct irlRoom {
     var roomCode:String = randomString(length: 6)
     var roomPlayers: [[String:String]] = []
     var gameStarted:String = "false"
+    var comCards:[String] = ["P", "00", "00", "00", "00", "00"]
     init (players:[[String:String]]) {
         self.roomPlayers = players
     }
     mutating func addPlayer(name:String) -> Void{
-        let newPlayer:[String:String] = ["name":name, "isHost":"false", "card1":"00", "card2":"00", "folds":"0"]
+        let newPlayer:[String:String] = ["name":name, "isHost":"false", "card1":"00", "card2":"00", "isFolded":"false"]
         self.roomPlayers.append(newPlayer)
         inPersonPlayers = self.roomPlayers
     }
@@ -96,12 +97,12 @@ class irlCreateGame: UIViewController {
         if errorMsg.isEmpty {
             //updates global variables
             inPersonPlayer = irlPlayer(name: nameText, isHost:"true")
-            inPersonPlayers = [["name":inPersonPlayer.name, "isHost":"true", "card1":"00", "card2":"00", "folds":"0"]]
+            inPersonPlayers = [["name":inPersonPlayer.name, "isHost":"true", "card1":"00", "card2":"00", "isFolded":"false"]]
             inPersonRm = irlRoom(players: inPersonPlayers)
             
             //updates new key in server
             let ref = Database.database().reference()
-            ref.child(inPersonRm.roomCode).setValue(["roomPlayers": inPersonPlayers, "gameStarted":"false"])
+            ref.child(inPersonRm.roomCode).setValue(["roomPlayers": inPersonPlayers, "gameStarted":"false","comCards":["P", "00", "00", "00", "00", "00"]])
                 
             //segues to storyboard reference
             let storyboard = UIStoryboard(name: "irlCreateGame", bundle: nil)
