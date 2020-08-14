@@ -92,6 +92,7 @@ class irlJoinGame: UIViewController {
                         else {
                             //checks to see if room is full
                             if (inPersonRm.roomPlayers.count < 10) {
+                                //updates variables
                                 inPersonRm.addPlayer(name: name)
                                 inPersonRm.roomCode = key
                                 inPersonPlayer = irlPlayer(name: name, isHost: "false")

@@ -13,6 +13,34 @@ import GameplayKit
 import FirebaseDatabase
 import Firebase
 
+//needed to use String.substring
+extension String {
+
+    var length: Int {
+        return count
+    }
+
+    subscript (i: Int) -> String {
+        return self[i ..< i + 1]
+    }
+
+    func substring(fromIndex: Int) -> String {
+        return self[min(fromIndex, length) ..< length]
+    }
+
+    func substring(toIndex: Int) -> String {
+        return self[0 ..< max(0, toIndex)]
+    }
+
+    subscript (r: Range<Int>) -> String {
+        let range = Range(uncheckedBounds: (lower: max(0, min(length, r.lowerBound)),
+                                            upper: min(length, max(0, r.upperBound))))
+        let start = index(startIndex, offsetBy: range.lowerBound)
+        let end = index(start, offsetBy: range.upperBound - range.lowerBound)
+        return String(self[start ..< end])
+    }
+}
+
 public enum Rank:Int {
     case Two = 2, Three, Four, Five, Six, Seven, Eight, Nine, Ten
     case Jack, Queen, King, Ace
@@ -26,8 +54,8 @@ public enum Suit:Int {
 }
 
 public struct Card {
-    let suit: Suit
-    let rank: Rank
+    var suit: Suit
+    var rank: Rank
 }
 
 public struct Deck {
@@ -78,8 +106,270 @@ extension Card: Equatable {
     }
 }
 
+func subArr(numbers: Array<Card>, startPosition: Int, endPosition:Int) -> Array<Card> {
+    let newCards = Array(numbers[startPosition..<endPosition])
+    return newCards
+}
+
+//returns the five cards making up hand
+func fiveCardHand(oldHand:Hand) -> [Card] {
+    let type:HandStrength = oldHand.getHand()
+    var newHand:[Card] = []
+    //checks which hand and return corresponding 5 card hand
+    if type == HandStrength.RoyalFlush {
+        var suits:[Suit:Int] = [Suit.Diamond:0, Suit.Heart:0, Suit.Spade:0, Suit.Club:0]
+        for card in oldHand.cards {
+            suits[card.suit]! += 1
+        }
+        var handSuit:Suit = Suit.Diamond
+        for (key,val) in suits {
+            if val >= 5 {
+                handSuit = key
+            }
+        }
+        newHand = [Card(suit: handSuit, rank: Rank.Ten), Card(suit: handSuit, rank: Rank.Jack), Card(suit: handSuit, rank: Rank.Queen), Card(suit: handSuit, rank: Rank.King), Card(suit: handSuit, rank: Rank.Ace)]
+        return newHand
+    }
+    else if type == HandStrength.StraightFlush {
+        let sortedHand = oldHand.cards.sorted(by: >)
+        var suits:[Suit:Int] = [Suit.Diamond:0, Suit.Heart:0, Suit.Spade:0, Suit.Club:0]
+        for card in sortedHand {
+            suits[card.suit]! += 1
+        }
+        var handSuit:Suit = Suit.Diamond
+        for (key,val) in suits {
+            if val >= 5 {
+                handSuit = key
+                break
+            }
+        }
+        var suitedCards:[Card] = []
+        for card in sortedHand {
+            if card.suit == handSuit {
+                suitedCards.append(card)
+            }
+        }
+        let numOfIterations:Int = suitedCards.count - 5
+        for i in stride(from: 0, through: numOfIterations, by: 1){
+            if isStraight(cards: subArr(numbers: suitedCards, startPosition:i, endPosition: i + 5)) {
+                return subArr(numbers: suitedCards, startPosition:i, endPosition: i + 5).sorted(by: >)
+            }
+        }
+        return [Card(suit: handSuit, rank: Rank.Five), Card(suit: handSuit, rank: Rank.Four), Card(suit: handSuit, rank: Rank.Three), Card(suit: handSuit, rank: Rank.Two), Card(suit: handSuit, rank: Rank.Ace)]
+    }
+    else if type == HandStrength.FourOfAKind {
+        var pairs:[Rank:Int] = [Rank.Two:0, Rank.Three:0,Rank.Four:0, Rank.Five:0,Rank.Six:0, Rank.Seven:0,Rank.Eight:0, Rank.Nine:0,Rank.Ten:0, Rank.Jack:0,Rank.Queen:0, Rank.King:0,Rank.Ace:0]
+        for card in oldHand.cards {
+            if let _:Int = pairs[card.rank]{
+                pairs[card.rank]! += 1
+            }
+        }
+        var fourCards:Rank = Rank.Two
+        for (key,val) in pairs {
+            if val == 4 {
+                fourCards = key
+                break
+            }
+        }
+        let sortedCards = oldHand.cards.sorted(by: >)
+        var highCard:Card = Card(suit: Suit.Diamond, rank: Rank.Two)
+        for i in stride(from: 0, to: sortedCards.count, by: 1) {
+            if sortedCards[i].rank != fourCards {
+                highCard = sortedCards[i]
+                break
+            }
+        }
+        return [Card(suit: Suit.Diamond, rank: fourCards), Card(suit: Suit.Club, rank: fourCards), Card(suit: Suit.Spade, rank: fourCards), Card(suit: Suit.Heart, rank: fourCards), highCard]
+        
+    }
+    else if type == HandStrength.FullHouse {
+        var pairs:[Rank:Int] = [Rank.Two:0, Rank.Three:0,Rank.Four:0, Rank.Five:0,Rank.Six:0, Rank.Seven:0,Rank.Eight:0, Rank.Nine:0,Rank.Ten:0, Rank.Jack:0,Rank.Queen:0, Rank.King:0,Rank.Ace:0]
+        for card in oldHand.cards {
+            if let _:Int = pairs[card.rank]{
+                pairs[card.rank]! += 1
+            }
+        }
+        var highestSet:Rank = Rank.Two
+        var highestPair:Rank = Rank.Two
+        for (key,val) in pairs {
+            if val > 2 && key.rawValue > highestSet.rawValue{
+                highestSet = key
+            }
+        }
+        pairs.removeValue(forKey: highestSet)
+        for (key,val) in pairs {
+            if val > 1 && key.rawValue > highestPair.rawValue{
+                highestPair = key
+            }
+        }
+        var new:[Card] = []
+        for card in oldHand.cards {
+            if card.rank == highestSet || card.rank == highestPair{
+                new.append(card)
+            }
+            if new.count == 5 {
+                break
+            }
+        }
+        return new
+    }
+    else if type == HandStrength.Flush {
+        let sortedHand = oldHand.cards.sorted(by: >)
+        var suits:[Suit:Int] = [Suit.Diamond:0, Suit.Heart:0, Suit.Spade:0, Suit.Club:0]
+        for card in sortedHand {
+            suits[card.suit]! += 1
+        }
+        var handSuit:Suit = Suit.Diamond
+        for (key,val) in suits {
+            if val >= 5 {
+                handSuit = key
+                break
+            }
+        }
+        var new:[Card] = []
+        for i in stride(from: 0, to: sortedHand.count, by: 1) {
+            if sortedHand[i].suit == handSuit {
+                new.append(sortedHand[i])
+                if new.count == 5 {
+                    break
+                }
+            }
+        }
+        return new
+    }
+    else if type == HandStrength.Straight {
+        let sortedHand = oldHand.cards.sorted(by: >)
+        var noPairs:[Rank:Card] = [:]
+        var sortedUnique:[Card] = []
+        for card in sortedHand {
+            guard let _:Card = noPairs[card.rank] else {
+                noPairs[card.rank] = card
+                sortedUnique.append(card)
+                continue
+            }
+        }
+        let numOfIterations:Int = noPairs.count - 5
+        for i in stride(from: 0, through: numOfIterations, by: 1) {
+            if isStraight(cards: subArr(numbers: sortedUnique, startPosition:i, endPosition: i + 5)) {
+                return subArr(numbers: sortedUnique, startPosition:i, endPosition: i + 5).sorted(by: >)
+            }
+        }
+        let leastToGreatest:[Card] = sortedUnique.sorted(by: <)
+        let new:[Card] = subArr(numbers: leastToGreatest, startPosition:0, endPosition: 4)
+        var sortedNew:[Card] = new.sorted(by: >)
+        sortedNew.append(leastToGreatest[leastToGreatest.count - 1])
+        return sortedNew
+    }
+    else if type == HandStrength.ThreeOfAKind {
+        var pairs:[Rank:Int] = [Rank.Two:0, Rank.Three:0,Rank.Four:0, Rank.Five:0,Rank.Six:0, Rank.Seven:0,Rank.Eight:0, Rank.Nine:0,Rank.Ten:0, Rank.Jack:0,Rank.Queen:0, Rank.King:0,Rank.Ace:0]
+        for card in oldHand.cards {
+            if let _:Int = pairs[card.rank]{
+                pairs[card.rank]! += 1
+            }
+        }
+        var highestSet:Rank = Rank.Two
+        for (key,val) in pairs {
+            if val > 2 && key.rawValue > highestSet.rawValue{
+                highestSet = key
+            }
+        }
+        let sortedHand = oldHand.cards.sorted(by: >)
+        var new:[Card] = []
+        for i in stride(from: 0, to: sortedHand.count, by: 1) {
+            if sortedHand[i].rank != highestSet {
+                new.append(sortedHand[i])
+            }
+            if new.count == 2 {
+                break
+            }
+        }
+        for i in stride(from: 0, to: sortedHand.count, by: 1) {
+            if sortedHand[i].rank == highestSet {
+                new.append(sortedHand[i])
+            }
+        }
+        return new
+    }
+    else if type == HandStrength.TwoPair {
+        let sortedHand = oldHand.cards.sorted(by: >)
+        var pairs:[Rank:Int] = [Rank.Two:0, Rank.Three:0,Rank.Four:0, Rank.Five:0,Rank.Six:0, Rank.Seven:0,Rank.Eight:0, Rank.Nine:0,Rank.Ten:0, Rank.Jack:0,Rank.Queen:0, Rank.King:0,Rank.Ace:0]
+        for card in oldHand.cards {
+            if let _:Int = pairs[card.rank]{
+                pairs[card.rank]! += 1
+            }
+        }
+        var pair1:Rank = Rank.Two
+        var pair2:Rank = Rank.Two
+        for (key,val) in pairs {
+            if val == 2 {
+                pair1 = key
+                pairs.removeValue(forKey: key)
+                break
+            }
+        }
+        for (key,val) in pairs {
+            if val == 2 {
+                pair2 = key
+                break
+            }
+        }
+        var newHand:[Card] = []
+        for i in stride(from: 0, to: sortedHand.count, by: 1) {
+            if sortedHand[i].rank != pair1 && sortedHand[i].rank != pair2 {
+                newHand.append(sortedHand[i])
+                break
+            }
+        }
+        for i in stride(from: 0, to: sortedHand.count, by: 1) {
+            if sortedHand[i].rank == pair1 || sortedHand[i].rank == pair2 {
+                newHand.append(sortedHand[i])
+            }
+        }
+        return newHand
+    }
+    else if type == HandStrength.Pair {
+        let sortedHand = oldHand.cards.sorted(by: >)
+        var pairs:[Rank:Int] = [Rank.Two:0, Rank.Three:0,Rank.Four:0, Rank.Five:0,Rank.Six:0, Rank.Seven:0,Rank.Eight:0, Rank.Nine:0,Rank.Ten:0, Rank.Jack:0,Rank.Queen:0, Rank.King:0,Rank.Ace:0]
+        for card in oldHand.cards {
+            if let _:Int = pairs[card.rank]{
+                pairs[card.rank]! += 1
+            }
+        }
+        var pair:Rank = Rank.Two
+        for (key,val) in pairs {
+            if val == 2 {
+                pair = key
+                break
+            }
+        }
+        var newHand:[Card] = []
+        for i in stride(from: 0, to: sortedHand.count, by: 1) {
+            if sortedHand[i].rank != pair {
+                newHand.append(sortedHand[i])
+            }
+            if newHand.count == 3 {
+                break
+            }
+        }
+        for i in stride(from: 0, to: sortedHand.count, by: 1) {
+            if sortedHand[i].rank == pair {
+                newHand.append(sortedHand[i])
+            }
+        }
+        return newHand
+        
+    }
+    else {
+        newHand = oldHand.cards.sorted(by: <)
+        while newHand.count > 5 {
+            newHand.remove(at: 0)
+        }
+        return newHand
+    }
+}
+
 public struct Hand {
-    private let cards: [Card]
+    public let cards: [Card]
  
     public var numberOfCards: Int {
         return cards.count
@@ -89,8 +379,8 @@ public struct Hand {
         self.cards = cards
     }
     public static func ==(lhs: Hand, rhs: Hand) -> Bool {
-           let lhsCards = lhs.cards.sorted(by: >)
-           let rhsCards = rhs.cards.sorted(by: >)
+           let lhsCards = fiveCardHand(oldHand: lhs).sorted(by: >)
+           let rhsCards = fiveCardHand(oldHand: rhs).sorted(by: >)
     
            for (lhsCard, rhsCard) in zip(lhs.cards, rhs.cards) {
                if lhsCard.rank != rhsCard.rank {
@@ -100,6 +390,18 @@ public struct Hand {
     
            return true
        }
+    public func getHand() -> HandStrength {
+        if isRoyalFlush(cards: cards) { return HandStrength.RoyalFlush }
+        if isStraightFlush(cards: cards) { return HandStrength.StraightFlush }
+        if isFourOfAKind(cards: cards) { return HandStrength.FourOfAKind}
+        if isFullHouse(cards: cards) { return HandStrength.FullHouse }
+        if isFlush(cards: cards) { return HandStrength.Flush }
+        if isStraight(cards: cards) { return HandStrength.Straight }
+        if isThreeOfAKind(cards: cards) { return HandStrength.ThreeOfAKind }
+        if isTwoPair(cards: cards) { return HandStrength.TwoPair }
+        if isPair(cards: cards) { return HandStrength.Pair }
+        return HandStrength.HighCard
+    }
 }
 
 extension Card: Comparable {
@@ -108,10 +410,24 @@ extension Card: Comparable {
     }
 }
 
+
+
 extension Hand: Comparable {
     public static func <(lhs: Hand, rhs: Hand) -> Bool {
-        let lhsCards = lhs.cards.sorted(by: >)
-        let rhsCards = rhs.cards.sorted(by: >)
+        let lhsHand = lhs.getHand()
+        let rhsHand = rhs.getHand()
+        //compares when they're dif hands
+        if lhsHand != rhsHand {
+            return lhsHand.rawValue < rhsHand.rawValue
+        }
+        //edge case to compare A-5 straight
+        if lhsHand == HandStrength.Straight || lhsHand == HandStrength.StraightFlush{
+            let lhsFive = fiveCardHand(oldHand: lhs)
+            let rhsFive = fiveCardHand(oldHand: rhs)
+            return lhsFive[0].rank.rawValue < rhsFive[0].rank.rawValue
+        }
+        let lhsCards = fiveCardHand(oldHand: lhs).sorted(by: >)
+        let rhsCards = fiveCardHand(oldHand: rhs).sorted(by: >)
  
         for (lhsCard, rhsCard) in zip(lhsCards, rhsCards) {
             if lhsCard.rank == rhsCard.rank { continue }
@@ -121,8 +437,289 @@ extension Hand: Comparable {
     }
 }
 
+func isPair(cards:[Card]) ->Bool {
+    var pairs:[Rank:Card] = [:]
+    for card in cards {
+        if let _:Card = pairs[card.rank]{
+            return true
+        }
+        pairs[card.rank] = card
+    }
+    return false
+}
+
+func isTwoPair(cards:[Card]) ->Bool {
+    if !isPair(cards:cards) {
+        return false
+    }
+    var pairs:[Rank:Int] = [Rank.Two:0, Rank.Three:0,Rank.Four:0, Rank.Five:0,Rank.Six:0, Rank.Seven:0,Rank.Eight:0, Rank.Nine:0,Rank.Ten:0, Rank.Jack:0,Rank.Queen:0, Rank.King:0,Rank.Ace:0]
+    for card in cards {
+        if let _:Int = pairs[card.rank]{
+            pairs[card.rank]! += 1
+        }
+    }
+    var numOfPairs = 0
+    for (_,value) in pairs {
+        if value > 1 {
+            numOfPairs = numOfPairs + 1
+        }
+    }
+    if numOfPairs > 1 {
+        return true
+    }
+    return false
+    
+}
+func isThreeOfAKind(cards:[Card]) ->Bool {
+    if !isPair(cards:cards) {
+        return false
+    }
+    var pairs:[Rank:Int] = [Rank.Two:0, Rank.Three:0,Rank.Four:0, Rank.Five:0,Rank.Six:0, Rank.Seven:0,Rank.Eight:0, Rank.Nine:0,Rank.Ten:0, Rank.Jack:0,Rank.Queen:0, Rank.King:0,Rank.Ace:0]
+    for card in cards {
+        if let _:Int = pairs[card.rank]{
+            pairs[card.rank]! += 1
+        }
+    }
+    for (_,value) in pairs {
+        if value > 2 {
+            return true
+        }
+    }
+    return false
+}
+
+func isStraight(cards:[Card]) -> Bool{
+    let sortedHand = cards.sorted(by: <)
+    var noPairs:[Rank:Card] = [:]
+    var sortedUnique:[Card] = []
+    for card in sortedHand {
+        guard let _:Card = noPairs[card.rank] else {
+            noPairs[card.rank] = card
+            sortedUnique.append(card)
+            continue
+        }
+    }
+    if noPairs.count < 5 {
+        return false
+    }
+    let numOfIterations:Int = noPairs.count - 5
+    for j in stride(from: 0, through: numOfIterations, by: 1) {
+        if sortedUnique[j].rank.rawValue + 4 == sortedUnique[j+4].rank.rawValue {
+            return true
+        }
+    }
+    if sortedUnique[sortedUnique.count - 1].rank == Rank.Ace {
+        if sortedUnique[3].rank == Rank.Five {
+            return true
+        }
+    }
+    return false
+    
+}
+
+func isFlush(cards:[Card]) -> Bool{
+    var numHearts:Int = 0
+    var numClubs:Int = 0
+    var numSpades:Int = 0
+    var numDiamonds:Int = 0
+    for card in cards {
+        if card.suit == Suit.Heart {
+            numHearts = numHearts + 1
+        }
+        if card.suit == Suit.Club {
+            numClubs = numClubs + 1
+        }
+        if card.suit == Suit.Spade {
+            numSpades = numSpades + 1
+        }
+        if card.suit == Suit.Diamond {
+            numDiamonds = numDiamonds + 1
+        }
+    }
+    if (numHearts >= 5 || numClubs >= 5 || numSpades >= 5 || numDiamonds >= 5) {
+        return true
+    }
+    return false
+}
+
+func isFullHouse(cards:[Card]) -> Bool {
+    if !isThreeOfAKind(cards: cards) {
+        return false
+    }
+    var pairs:[Rank:Int] = [Rank.Two:0, Rank.Three:0,Rank.Four:0, Rank.Five:0,Rank.Six:0, Rank.Seven:0,Rank.Eight:0, Rank.Nine:0,Rank.Ten:0, Rank.Jack:0,Rank.Queen:0, Rank.King:0,Rank.Ace:0]
+    for card in cards {
+        if let _:Int = pairs[card.rank]{
+            pairs[card.rank]! += 1
+        }
+    }
+    for (key,value) in pairs {
+        if value > 2 {
+            pairs[key] = 0
+            break
+        }
+    }
+    for (_,value) in pairs {
+        if value > 1 {
+            return true
+        }
+    }
+    return false
+}
+
+func isFourOfAKind(cards:[Card]) -> Bool {
+    if !isThreeOfAKind(cards: cards) {
+        return false
+    }
+    var pairs:[Rank:Int] = [Rank.Two:0, Rank.Three:0,Rank.Four:0, Rank.Five:0,Rank.Six:0, Rank.Seven:0,Rank.Eight:0, Rank.Nine:0,Rank.Ten:0, Rank.Jack:0,Rank.Queen:0, Rank.King:0,Rank.Ace:0]
+    for card in cards {
+        if let _:Int = pairs[card.rank]{
+            pairs[card.rank]! += 1
+        }
+    }
+    for (_,value) in pairs {
+        if value == 4 {
+            return true
+        }
+    }
+    return false
+}
+
+func isStraightFlush(cards:[Card]) -> Bool {
+    if !(isFlush(cards: cards)) || !(isStraight(cards: cards)) {
+        return false
+    }
+    let sortedHand = cards.sorted(by: <)
+    var noPairs:[Rank:Card] = [:]
+    var sortedUnique:[Card] = []
+    for card in sortedHand {
+        guard let _:Card = noPairs[card.rank] else {
+            noPairs[card.rank] = card
+            sortedUnique.append(card)
+            continue
+        }
+    }
+    if noPairs.count < 5 {
+        return false
+    }
+    let numOfIterations:Int = sortedUnique.count - 5
+    for j in stride(from: 0, through: numOfIterations, by: 1) {
+        for k in stride(from: 0, through: 3, by: 1) {
+            if k == 3 {
+                if (sortedUnique[j+3].rank.rawValue == (sortedUnique[j+4].rank.rawValue - 1)) && (sortedUnique[j+3].suit == sortedUnique[j+4].suit) {
+                    return true
+                }
+                
+            }
+            if (sortedUnique[j+k].rank.rawValue != (sortedUnique[j+k+1].rank.rawValue - 1)) || (sortedUnique[j+k].suit != sortedUnique[j+k+1].suit) {
+                break
+            }
+            
+        }
+    }
+    if sortedUnique[sortedUnique.count - 1].rank == Rank.Ace && sortedUnique[3].rank == Rank.Five {
+        for i in stride(from: 0, through: 3, by: 1) {
+            if sortedUnique[i].suit != sortedUnique[sortedUnique.count - 1].suit {
+                break
+            }
+            if i == 3 {
+                return true
+            }
+        }
+    }
+    return false
+}
+
+func isRoyalFlush(cards:[Card]) -> Bool {
+    if !isStraightFlush(cards: cards) {
+        return false
+    }
+    let sortedHand = cards.sorted(by: <)
+    var sortedUnique:[Card] = []
+    var noPairs:[Rank:Card] = [:]
+    for card in sortedHand {
+        guard let _:Card = noPairs[card.rank] else {
+            noPairs[card.rank] = card
+            sortedUnique.append(card)
+            continue
+        }
+    }
+    if sortedUnique[sortedUnique.count - 1].rank == Rank.Ace && sortedUnique[sortedUnique.count - 5].rank == Rank.Ten {
+        return true
+    }
+    return false
+}
+
+
 public enum HandStrength: Int {
-    case EmptyHand, HighCard, Pair, TwoPair, ThreeOfAKind, Straight, Flush, FullHouse, FourOfAKind, StraightFlush
+    case HighCard, Pair, TwoPair, ThreeOfAKind, Straight, Flush, FullHouse, FourOfAKind, StraightFlush, RoyalFlush
+}
+
+func winningHand(hands:[Hand]) -> [Card] {
+    var winningHand:Hand = hands[0]
+    for i in stride(from: 1, to: hands.count, by: 1) {
+        if hands[i] != winningHand {
+            if hands[i] > winningHand {
+                winningHand = hands[i]
+            }
+        }
+    }
+    return fiveCardHand(oldHand: winningHand)
+}
+
+func stringToCard(str:String) -> Card {
+    var card:Card = Card(suit: Suit.Heart, rank: Rank.Two)
+    if str[0] == "2"{
+        card.rank = Rank.Two
+    }
+    if str[0] == "3"{
+        card.rank = Rank.Three
+    }
+    if str[0] == "4"{
+        card.rank = Rank.Four
+    }
+    if str[0] == "5"{
+        card.rank = Rank.Five
+    }
+    if str[0] == "6"{
+        card.rank = Rank.Six
+    }
+    if str[0] == "7"{
+        card.rank = Rank.Seven
+    }
+    if str[0] == "8"{
+        card.rank = Rank.Eight
+    }
+    if str[0] == "9"{
+        card.rank = Rank.Nine
+    }
+    if str[0] == "1"{
+        card.rank = Rank.Ten
+    }
+    if str[0] == "J"{
+        card.rank = Rank.Jack
+    }
+    if str[0] == "Q"{
+        card.rank = Rank.Queen
+    }
+    if str[0] == "K"{
+        card.rank = Rank.King
+    }
+    if str[0] == "A"{
+        card.rank = Rank.Ace
+    }
+    if str[str.count-1] == "S"{
+        card.suit = Suit.Spade
+    }
+    if str[str.count-1] == "C"{
+        card.suit = Suit.Club
+    }
+    if str[str.count-1] == "H"{
+        card.suit = Suit.Heart
+    }
+    if str[str.count-1] == "D"{
+        card.suit = Suit.Diamond
+    }
+    return card
 }
 
 func cardToString(card:Card) ->String {
@@ -358,6 +955,53 @@ class irlGameTable: UIViewController {
             }
         })
         
+        //check community cards upon initial entry
+        ref.child(inPersonRm.roomCode).child("comCards").observe(.value, with: { firDataSnapshot in
+            guard let val = firDataSnapshot.value as? [String] else {
+                return
+            }
+            inPersonRm.comCards = val
+            if inPersonRm.comCards[0] != "P" {
+                var cardsShown:Int = 0
+                if inPersonRm.comCards[0] == "F" {
+                    
+                    cardsShown = 3
+                }
+                if inPersonRm.comCards[0] == "T" {
+                    cardsShown = 4
+                }
+                if inPersonRm.comCards[0] == "R" {
+                    cardsShown = 5
+                }
+                for i in stride(from: 0, to: cardsShown, by: 1) {
+                    comCards[i]?.image = UIImage(named: inPersonRm.comCards[i+1])
+                }
+            }
+            else {
+                for card in comCards {
+                    card?.image = UIImage(named: "back")
+                }
+                ref.child(inPersonRm.roomCode).child("roomPlayers").observeSingleEvent(of: .value, with: { (snapshot) in
+                    guard let playersCopy = snapshot.value as? [[String:String]] else {
+                        print("messed up")
+                        return
+                    }
+                    inPersonPlayers = playersCopy
+                    inPersonRm.roomPlayers = inPersonPlayers
+                    for player in inPersonPlayers{
+                        if player["name"] == inPersonPlayer.name && player["card1"] != "00"{
+                            guard let card1Val = player["card1"] else{return}
+                            inPersonPlayer.card1 = stringToCard(str: card1Val)
+                            guard let card2Val = player["card2"] else{return}
+                            inPersonPlayer.card2 = stringToCard(str: card2Val)
+                            self.card1.image = UIImage(named: card1Val)
+                            self.card2.image = UIImage(named: card2Val)
+                        }
+                    }
+                })
+            }
+        })
+          
         //observes if player was removed
         ref.child(inPersonRm.roomCode).child("roomPlayers").observe(.childRemoved, with: { firDataSnapshot in
             var wasRemoved:Bool = true
@@ -367,7 +1011,7 @@ class irlGameTable: UIViewController {
                     return
                 }
                 inPersonPlayers = playersCopy
-                print(inPersonPlayers)
+                inPersonRm.roomPlayers = inPersonPlayers
                 for player in inPersonPlayers {
                     if player["name"] == inPersonPlayer.name {
                         wasRemoved = false
@@ -436,6 +1080,7 @@ class irlGameTable: UIViewController {
                     return
                 }
                 inPersonPlayers = playersCopy
+                inPersonRm.roomPlayers = inPersonPlayers
             })
         })
         
@@ -476,7 +1121,7 @@ class irlGameTable: UIViewController {
         }
         
         
-        //gives all players cards, updates UI, updates server
+        //gives all players cards, updates UI, updates server, makes isFolded false
         for i in stride(from: 0, to: inPersonPlayers.count, by: 1) {
             let c1:Card = rmDeck.drawCard() ?? Card(suit: Suit.Diamond, rank: Rank.Two)
             let c2:Card = rmDeck.drawCard() ?? Card(suit: Suit.Diamond, rank: Rank.Two)
@@ -490,10 +1135,20 @@ class irlGameTable: UIViewController {
                 inPersonPlayer.card1 = c1
                 inPersonPlayer.card2 = c2
             }
+            inPersonPlayers[i]["isFolded"] = "false"
         }
         
+        //deals com cards and sets hand position to preflop
+        for i in stride(from: 1, to: 6, by: 1){
+            let card:Card = rmDeck.drawCard() ?? Card(suit: Suit.Diamond, rank: Rank.Two)
+            inPersonRm.comCards[i] = cardToString(card: card)
+        }
+        inPersonRm.comCards[0] = "P"
+        
+        //updates server
         let ref = Database.database().reference()
         ref.child(inPersonRm.roomCode).child("roomPlayers").setValue(inPersonPlayers)
+        ref.child(inPersonRm.roomCode).child("comCards").setValue(inPersonRm.comCards)
     }
     
     func getGreyImage(myImage:UIImage) -> UIImage {
@@ -546,6 +1201,21 @@ class irlGameTable: UIViewController {
                 names[i]?.isHidden = true
             }
         }
+    }
+    
+    
+    @IBAction func tapDealButton(_ sender: Any) {
+        if inPersonRm.comCards[0] == "P" {
+            inPersonRm.comCards[0] = "F"
+        }
+        else if inPersonRm.comCards[0] == "F" {
+            inPersonRm.comCards[0] = "T"
+        }
+        else if inPersonRm.comCards[0] == "T" {
+            inPersonRm.comCards[0] = "R"
+        }
+        let ref = Database.database().reference()
+        ref.child(inPersonRm.roomCode).child("comCards").setValue(inPersonRm.comCards)
     }
     
     
