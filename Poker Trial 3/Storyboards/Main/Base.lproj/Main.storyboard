@@ -53,6 +53,9 @@
                                             <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <variation key="heightClass=regular-widthClass=regular">
+                                            <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="30"/>
+                                        </variation>
                                         <connections>
                                             <segue destination="GXP-nR-jO6" kind="show" id="ZlG-VX-C4k"/>
                                         </connections>
@@ -88,9 +91,17 @@
                                     <constraint firstAttribute="height" constant="200" id="I4w-jj-UZO"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coming Soon😈" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xRa-3g-cYZ">
+                                <rect key="frame" x="108.5" y="430.5" width="197" height="35"/>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="30"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="xRa-3g-cYZ" firstAttribute="centerX" secondItem="oUY-4h-0Sf" secondAttribute="centerX" id="02G-dc-cmy"/>
+                            <constraint firstItem="xRa-3g-cYZ" firstAttribute="centerY" secondItem="oUY-4h-0Sf" secondAttribute="centerY" id="BlP-eb-3aH"/>
                             <constraint firstAttribute="trailing" secondItem="2MS-uZ-fpk" secondAttribute="trailing" id="FYy-Zc-qYb"/>
                             <constraint firstAttribute="bottom" secondItem="2MS-uZ-fpk" secondAttribute="bottom" id="Lwd-uQ-UgK"/>
                             <constraint firstItem="bq2-3y-8TE" firstAttribute="centerX" secondItem="oUY-4h-0Sf" secondAttribute="centerX" id="PEO-h3-elD"/>

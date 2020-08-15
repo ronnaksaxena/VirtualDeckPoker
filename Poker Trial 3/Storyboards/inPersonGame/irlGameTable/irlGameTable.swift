@@ -12,6 +12,8 @@ import SpriteKit
 import GameplayKit
 import FirebaseDatabase
 import Firebase
+import AVFoundation
+
 
 //needed to use String.substring
 extension String {
@@ -780,6 +782,46 @@ func cardToString(card:Card) ->String {
     return cardString
 }
 
+func getHandText(cardsShown:Int) -> String {
+    guard let card1:Card = inPersonPlayer.card1 else{return ""}
+    guard let card2:Card = inPersonPlayer.card2 else{return ""}
+    var cards:[Card] = [card1, card2]
+    for i in stride(from: 1, through: cardsShown, by: 1) {
+        let comCard:Card = stringToCard(str: inPersonRm.comCards[i])
+        cards.append(comCard)
+    }
+    let hand:Hand = Hand(cards: cards)
+    let type = hand.getHand()
+    if type == HandStrength.RoyalFlush {
+        return "Royal Flush👑"
+    }
+    else if type == HandStrength.StraightFlush {
+        return "Straight Flush🧐"
+    }
+    else if type == HandStrength.FourOfAKind {
+        return "Four Of A Kind4️⃣"
+    }
+    else if type == HandStrength.FullHouse {
+        return "Full House😈"
+    }
+    else if type == HandStrength.Flush {
+        return "Flush🤧"
+    }
+    else if type == HandStrength.Straight {
+        return "Straight🤝"
+    }
+    else if type == HandStrength.ThreeOfAKind {
+        return "Three Of A Kind3️⃣"
+    }
+    else if type == HandStrength.TwoPair {
+        return "Two Pair🤗"
+    }
+    else if type == HandStrength.Pair {
+        return "Pair🙏"
+    }
+    return "Highcard🤡"
+}
+
 // UIImage+Alpha.swift
 
 extension UIImage {
@@ -845,9 +887,31 @@ class irlGameTable: UIViewController {
     
     @IBOutlet weak var waitingLabel: UILabel!
     
+    @IBOutlet weak var copyButton: UIButton!
     
+    //deck class for dealing
     var rmDeck:Deck = Deck()
+    //sounds
+    var audioPlayer = AVAudioPlayer()
+    let foldSound = Bundle.main.path(forResource: "foldSound", ofType: "wav")
+    let dealSound = Bundle.main.path(forResource: "dealSound", ofType: "wav")
     
+    //function to delete room when time elapses
+    @objc func deleteRoom() -> Void {
+        let ref = Database.database().reference()
+        ref.child(inPersonRm.roomCode).removeValue()
+    }
+    //timer for room
+    var timer = Timer()
+    func startTimer(){
+        timer = Timer.scheduledTimer(timeInterval: 3600, target: self, selector: #selector(self.deleteRoom), userInfo: nil, repeats: false)
+    }
+
+    func resetTimer(){
+
+        timer.invalidate()
+        startTimer()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -885,6 +949,10 @@ class irlGameTable: UIViewController {
         leaveButton.tintColor = UIColor.white
         leaveButton.layer.borderWidth = 2.0
         leaveButton.layer.borderColor = CGColor.init(srgbRed: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+        copyButton.layer.cornerRadius = 10.0
+        copyButton.tintColor = UIColor.white
+        copyButton.layer.borderWidth = 2.0
+        copyButton.layer.borderColor = CGColor.init(srgbRed: 255/255, green: 255/255, blue: 255/255, alpha: 1)
         
         //groups to use later
         let comCards = [flop1, flop2, flop3, turn, river]
@@ -962,15 +1030,25 @@ class irlGameTable: UIViewController {
             }
             inPersonRm.comCards = val
             if inPersonRm.comCards[0] != "P" {
+                self.handLabel.isHidden = false
+                //plays deal sound
+                do {
+                    self.audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: self.dealSound!))
+                }
+                catch {
+                    print("error")
+                }
                 var cardsShown:Int = 0
                 if inPersonRm.comCards[0] == "F" {
-                    
+                    self.handLabel.text = getHandText(cardsShown: 3)
                     cardsShown = 3
                 }
                 if inPersonRm.comCards[0] == "T" {
+                    self.handLabel.text = getHandText(cardsShown: 4)
                     cardsShown = 4
                 }
                 if inPersonRm.comCards[0] == "R" {
+                    self.handLabel.text = getHandText(cardsShown: 5)
                     cardsShown = 5
                 }
                 for i in stride(from: 0, to: cardsShown, by: 1) {
@@ -978,9 +1056,15 @@ class irlGameTable: UIViewController {
                 }
             }
             else {
+                //resets room timer
+                self.resetTimer()
+                
+                //hides hand label and com cards
+                self.handLabel.isHidden = true
                 for card in comCards {
                     card?.image = UIImage(named: "back")
                 }
+                //displays players cards
                 ref.child(inPersonRm.roomCode).child("roomPlayers").observeSingleEvent(of: .value, with: { (snapshot) in
                     guard let playersCopy = snapshot.value as? [[String:String]] else {
                         print("messed up")
@@ -1041,7 +1125,7 @@ class irlGameTable: UIViewController {
             
         })
         
-        //observes players: if theres a new hand, new host, or player folds
+        //observes players: if theres a new host or player folds
         ref.child(inPersonRm.roomCode).child("roomPlayers").observe(.childChanged, with: { firDataSnapshot in
             ref.child(inPersonRm.roomCode).child("roomPlayers").observeSingleEvent(of: .value, with: { (snapshot) in
                 let playersCopy = snapshot.value as? [[String:String]]
@@ -1084,6 +1168,37 @@ class irlGameTable: UIViewController {
             })
         })
         
+        //observes if player was added
+        ref.child(inPersonRm.roomCode).child("roomPlayers").observe(.childAdded, with: { firDataSnapshot in
+            guard let playersCopy = firDataSnapshot.value as? [[String:String]] else{return}
+            //updates variables
+            inPersonPlayers = playersCopy
+            inPersonRm.roomPlayers = inPersonPlayers
+            
+            //adds name to table
+            for i in stride(from: 0, through: 9, by: 1) {
+                names[i]?.isHidden = true
+            }
+            for i in stride(from: 0, through: inPersonPlayers.count - 1, by: 1) {
+                names[i]?.isHidden = false
+                guard let name = inPersonPlayers[i]["name"] else {
+                    print("Error here")
+                    return
+                }
+                names[i]?.setTitle(name, for: UIControl.State.normal)
+            }
+        })
+        
+        //deletes room if no new hand is dealt for 60 minutes
+        startTimer()
+        
+        //observes if room was deleted
+        ref.child(inPersonRm.roomCode).observe(.childRemoved, with: { firDataSnapshot in
+            //segues to Main if room is deleted
+            let storyboard = UIStoryboard(name: "irlGameTable", bundle: nil)
+            let myVC = storyboard.instantiateViewController(withIdentifier: "Main")
+            self.present(myVC, animated: true, completion: nil)
+        })
     }
 
     override var shouldAutorotate: Bool {
@@ -1176,6 +1291,13 @@ class irlGameTable: UIViewController {
     
     
     @IBAction func tapFold(_ sender: Any) {
+        //plays folding sound
+        do {
+        audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: foldSound!))
+        }
+        catch {
+            print("error")
+        }
         //make cards grey and transparent
         guard let grey1 = card1.image else {return}
         let card1Grey = getGreyImage(myImage: grey1)
@@ -1216,6 +1338,12 @@ class irlGameTable: UIViewController {
         }
         let ref = Database.database().reference()
         ref.child(inPersonRm.roomCode).child("comCards").setValue(inPersonRm.comCards)
+    }
+    
+    
+    @IBAction func tapCopyButton(_ sender: Any) {
+        let pasteBoard = UIPasteboard.general
+        pasteBoard.string = inPersonRm.roomCode
     }
     
     

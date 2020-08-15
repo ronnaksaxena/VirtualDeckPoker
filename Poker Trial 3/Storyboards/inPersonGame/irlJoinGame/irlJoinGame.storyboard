@@ -51,11 +51,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j4m-RY-rv1" userLabel="backButton">
-                                <rect key="frame" x="20" y="64" width="62.5" height="52"/>
+                                <rect key="frame" x="20" y="64" width="69" height="62"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="arrowshape.turn.up.left.fill" catalog="system">
+                                <state key="normal" image="arrow.left.square.fill" catalog="system">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="50"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="60"/>
                                 </state>
                                 <connections>
                                     <segue destination="vWG-mY-CVb" kind="show" id="Mun-Wj-Avi"/>
@@ -167,6 +167,6 @@
     <resources>
         <image name="Background" width="414" height="896"/>
         <image name="Virtual Deck Poker_sata-1" width="2000" height="2000"/>
-        <image name="arrowshape.turn.up.left.fill" catalog="system" width="128" height="106"/>
+        <image name="arrow.left.square.fill" catalog="system" width="128" height="114"/>
     </resources>
 </document>

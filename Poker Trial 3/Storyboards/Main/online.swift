@@ -28,6 +28,10 @@ class online: UIViewController {
         createButton.tintColor = UIColor.white
         createButton.layer.borderWidth = 2.0
         createButton.layer.borderColor = CGColor.init(srgbRed: 119/255, green: 136/255, blue: 153/255, alpha: 1)
+        
+        //hides for now
+        createButton.isHidden = true
+        joinButton.isHidden = true
     }
 
     override var shouldAutorotate: Bool {

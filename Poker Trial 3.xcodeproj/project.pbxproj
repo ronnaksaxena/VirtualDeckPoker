@@ -38,6 +38,9 @@
 		519E70992495713F0038B1D7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 519E70982495713F0038B1D7 /* GoogleService-Info.plist */; };
 		519E709B24994FC30038B1D7 /* gameTable.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 519E709A24994FC30038B1D7 /* gameTable.storyboard */; };
 		519E709E24994FE80038B1D7 /* gameTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519E709D24994FE80038B1D7 /* gameTable.swift */; };
+		51D567AE24E75F5200FEF4F8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51D567AD24E75F5200FEF4F8 /* AVFoundation.framework */; };
+		51D567B124E75FC400FEF4F8 /* dealSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 51D567B024E75FC400FEF4F8 /* dealSound.wav */; };
+		51D567B324E75FD200FEF4F8 /* foldSound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 51D567B224E75FD200FEF4F8 /* foldSound.wav */; };
 		F27ACDAF05A67E1CBECB0F6F /* Pods_Poker_Trial_3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 204E68B00581CC6DBEDBF839 /* Pods_Poker_Trial_3.framework */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +79,9 @@
 		519E70982495713F0038B1D7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		519E709A24994FC30038B1D7 /* gameTable.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = gameTable.storyboard; sourceTree = "<group>"; };
 		519E709D24994FE80038B1D7 /* gameTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gameTable.swift; sourceTree = "<group>"; };
+		51D567AD24E75F5200FEF4F8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		51D567B024E75FC400FEF4F8 /* dealSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = dealSound.wav; sourceTree = "<group>"; };
+		51D567B224E75FD200FEF4F8 /* foldSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = foldSound.wav; sourceTree = "<group>"; };
 		54F5C9AF603E2D88D2B23944 /* Pods-Poker Trial 3.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Poker Trial 3.debug.xcconfig"; path = "Target Support Files/Pods-Poker Trial 3/Pods-Poker Trial 3.debug.xcconfig"; sourceTree = "<group>"; };
 		ABC865FE613A342FE7040A58 /* Pods-Poker Trial 3.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Poker Trial 3.release.xcconfig"; path = "Target Support Files/Pods-Poker Trial 3/Pods-Poker Trial 3.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -85,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51D567AE24E75F5200FEF4F8 /* AVFoundation.framework in Frameworks */,
 				F27ACDAF05A67E1CBECB0F6F /* Pods_Poker_Trial_3.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -95,6 +102,7 @@
 		1DDD59845381C2F71F605EB5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				51D567AD24E75F5200FEF4F8 /* AVFoundation.framework */,
 				204E68B00581CC6DBEDBF839 /* Pods_Poker_Trial_3.framework */,
 			);
 			name = Frameworks;
@@ -112,6 +120,7 @@
 		513B89BA24CB641800FC24B8 /* inPersonGame */ = {
 			isa = PBXGroup;
 			children = (
+				51D567AF24E75F7500FEF4F8 /* Sounds */,
 				513B89EC24CCD3A000FC24B8 /* irlGameTable */,
 				513B89E724CCC92700FC24B8 /* irlCreateGame */,
 				513B89E624CCC91D00FC24B8 /* irlJoinGame */,
@@ -246,6 +255,15 @@
 			path = gameTable;
 			sourceTree = "<group>";
 		};
+		51D567AF24E75F7500FEF4F8 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				51D567B024E75FC400FEF4F8 /* dealSound.wav */,
+				51D567B224E75FD200FEF4F8 /* foldSound.wav */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -318,8 +336,10 @@
 				519E7075249558D80038B1D7 /* GameScene.sks in Resources */,
 				512CBFA524D75A42001C7B43 /* settingsView.storyboard in Resources */,
 				519E708F24955DE20038B1D7 /* joinGame.storyboard in Resources */,
+				51D567B124E75FC400FEF4F8 /* dealSound.wav in Resources */,
 				519E709B24994FC30038B1D7 /* gameTable.storyboard in Resources */,
 				519E7080249558DA0038B1D7 /* Assets.xcassets in Resources */,
+				51D567B324E75FD200FEF4F8 /* foldSound.wav in Resources */,
 				519E7083249558DA0038B1D7 /* LaunchScreen.storyboard in Resources */,
 				519E7077249558D80038B1D7 /* Actions.sks in Resources */,
 			);
