@@ -62,7 +62,7 @@
 		514CB67924D4CEC4002AE4C8 /* hostWarning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hostWarning.swift; sourceTree = "<group>"; };
 		514CB67B24D750E4002AE4C8 /* removeWarning.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = removeWarning.storyboard; sourceTree = "<group>"; };
 		514CB67D24D75107002AE4C8 /* hostWarning.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = hostWarning.storyboard; sourceTree = "<group>"; };
-		519E706F249558D80038B1D7 /* Poker Trial 3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Poker Trial 3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		519E706F249558D80038B1D7 /* Virtual Deck Poker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Virtual Deck Poker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		519E7072249558D80038B1D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		519E7074249558D80038B1D7 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		519E7076249558D80038B1D7 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
@@ -82,6 +82,7 @@
 		51D567AD24E75F5200FEF4F8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		51D567B024E75FC400FEF4F8 /* dealSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = dealSound.wav; sourceTree = "<group>"; };
 		51D567B224E75FD200FEF4F8 /* foldSound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = foldSound.wav; sourceTree = "<group>"; };
+		51F6DA1424E88757008466E5 /* Poker Trial 3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Poker Trial 3.entitlements"; sourceTree = "<group>"; };
 		54F5C9AF603E2D88D2B23944 /* Pods-Poker Trial 3.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Poker Trial 3.debug.xcconfig"; path = "Target Support Files/Pods-Poker Trial 3/Pods-Poker Trial 3.debug.xcconfig"; sourceTree = "<group>"; };
 		ABC865FE613A342FE7040A58 /* Pods-Poker Trial 3.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Poker Trial 3.release.xcconfig"; path = "Target Support Files/Pods-Poker Trial 3/Pods-Poker Trial 3.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -186,7 +187,7 @@
 		519E7070249558D80038B1D7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				519E706F249558D80038B1D7 /* Poker Trial 3.app */,
+				519E706F249558D80038B1D7 /* Virtual Deck Poker.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -194,6 +195,7 @@
 		519E7071249558D80038B1D7 /* Poker Trial 3 */ = {
 			isa = PBXGroup;
 			children = (
+				51F6DA1424E88757008466E5 /* Poker Trial 3.entitlements */,
 				519E7072249558D80038B1D7 /* AppDelegate.swift */,
 				519E7074249558D80038B1D7 /* GameScene.sks */,
 				519E7076249558D80038B1D7 /* Actions.sks */,
@@ -283,7 +285,7 @@
 			);
 			name = "Poker Trial 3";
 			productName = "Poker Trial 3";
-			productReference = 519E706F249558D80038B1D7 /* Poker Trial 3.app */;
+			productReference = 519E706F249558D80038B1D7 /* Virtual Deck Poker.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -553,14 +555,18 @@
 			baseConfigurationReference = 54F5C9AF603E2D88D2B23944 /* Pods-Poker Trial 3.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Poker Trial 3/Poker Trial 3.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VRNSUP3X33;
 				INFOPLIST_FILE = "Poker Trial 3/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Ronnak-Saxena.Poker-Trial-3";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "Ronnak-Saxena.VDPoker123";
+				PRODUCT_NAME = "Virtual Deck Poker";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -571,14 +577,18 @@
 			baseConfigurationReference = ABC865FE613A342FE7040A58 /* Pods-Poker Trial 3.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Poker Trial 3/Poker Trial 3.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VRNSUP3X33;
 				INFOPLIST_FILE = "Poker Trial 3/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "Ronnak-Saxena.Poker-Trial-3";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "Ronnak-Saxena.VDPoker123";
+				PRODUCT_NAME = "Virtual Deck Poker";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

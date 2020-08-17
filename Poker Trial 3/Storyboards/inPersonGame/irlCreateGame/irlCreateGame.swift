@@ -46,7 +46,7 @@ var inPersonPlayer = irlPlayer(name: "", isHost:"true")
 var inPersonPlayers:[[String:String]] = []
 var inPersonRm = irlRoom(players:inPersonPlayers)
 
-class irlCreateGame: UIViewController {
+class irlCreateGame: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var name: UITextField!
     
@@ -58,10 +58,14 @@ class irlCreateGame: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //adds borders
         createButton.layer.cornerRadius = 10.0
         createButton.tintColor = UIColor.white
         createButton.layer.borderWidth = 2.0
         createButton.layer.borderColor = CGColor.init(srgbRed: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+        
+        //assigns delegates
+        name.delegate = self
     }
 
     override var shouldAutorotate: Bool {
@@ -112,14 +116,19 @@ class irlCreateGame: UIViewController {
         else {
             errorLabel.text = errorMsg
         }
-            
-            
-            
-            
-            
-            
     }
-        
+    
+    //makes keyboard hidden when tapped outside
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    //makes keyboard hidden when return is tapped
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == name {
+            textField.resignFirstResponder()
+        }
+        return true
+    }
         
 }
     

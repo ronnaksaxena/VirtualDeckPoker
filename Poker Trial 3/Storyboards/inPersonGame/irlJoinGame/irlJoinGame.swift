@@ -13,7 +13,7 @@ import GameplayKit
 import FirebaseDatabase
 
 
-class irlJoinGame: UIViewController {
+class irlJoinGame: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var nameText: UITextField!
     
@@ -31,6 +31,10 @@ class irlJoinGame: UIViewController {
         joinButton.tintColor = UIColor.white
         joinButton.layer.borderWidth = 2.0
         joinButton.layer.borderColor = CGColor.init(srgbRed: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+        
+        //assigns delegates
+        nameText.delegate = self
+        codeText.delegate = self
     }
 
     override var shouldAutorotate: Bool {
@@ -138,6 +142,20 @@ class irlJoinGame: UIViewController {
             print("Unexpected error: \(error).")
         }
         errorLabel.text = errorMsg
+    }
+    //makes keyboard hidden when tapped outside
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    //makes keyboard hidden when return is tapped
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == nameText {
+            textField.resignFirstResponder()
+        }
+        else if textField == codeText {
+            textField.resignFirstResponder()
+        }
+        return true
     }
     
     
