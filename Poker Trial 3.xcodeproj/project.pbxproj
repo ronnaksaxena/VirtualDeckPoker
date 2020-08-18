@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		51258F9724EB760F00D99C01 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 51258F9624EB760F00D99C01 /* GoogleService-Info.plist */; };
 		512CBFA524D75A42001C7B43 /* settingsView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 512CBFA424D75A42001C7B43 /* settingsView.storyboard */; };
 		512F4FBE24D76D5D00887215 /* leaveWarning.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 512F4FBD24D76D5D00887215 /* leaveWarning.storyboard */; };
 		512F4FC024D76D9E00887215 /* leaveWarning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512F4FBF24D76D9E00887215 /* leaveWarning.swift */; };
@@ -35,7 +36,6 @@
 		519E709324955E100038B1D7 /* joinGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519E709224955E100038B1D7 /* joinGame.swift */; };
 		519E709524955E230038B1D7 /* createGame.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 519E709424955E230038B1D7 /* createGame.storyboard */; };
 		519E709724955E330038B1D7 /* createGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519E709624955E330038B1D7 /* createGame.swift */; };
-		519E70992495713F0038B1D7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 519E70982495713F0038B1D7 /* GoogleService-Info.plist */; };
 		519E709B24994FC30038B1D7 /* gameTable.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 519E709A24994FC30038B1D7 /* gameTable.storyboard */; };
 		519E709E24994FE80038B1D7 /* gameTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519E709D24994FE80038B1D7 /* gameTable.swift */; };
 		51D567AE24E75F5200FEF4F8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51D567AD24E75F5200FEF4F8 /* AVFoundation.framework */; };
@@ -46,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		204E68B00581CC6DBEDBF839 /* Pods_Poker_Trial_3.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Poker_Trial_3.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		51258F9624EB760F00D99C01 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		512CBFA424D75A42001C7B43 /* settingsView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = settingsView.storyboard; sourceTree = "<group>"; };
 		512F4FBD24D76D5D00887215 /* leaveWarning.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = leaveWarning.storyboard; sourceTree = "<group>"; };
 		512F4FBF24D76D9E00887215 /* leaveWarning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = leaveWarning.swift; sourceTree = "<group>"; };
@@ -76,7 +77,6 @@
 		519E709224955E100038B1D7 /* joinGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = joinGame.swift; sourceTree = "<group>"; };
 		519E709424955E230038B1D7 /* createGame.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = createGame.storyboard; sourceTree = "<group>"; };
 		519E709624955E330038B1D7 /* createGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = createGame.swift; sourceTree = "<group>"; };
-		519E70982495713F0038B1D7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		519E709A24994FC30038B1D7 /* gameTable.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = gameTable.storyboard; sourceTree = "<group>"; };
 		519E709D24994FE80038B1D7 /* gameTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gameTable.swift; sourceTree = "<group>"; };
 		51D567AD24E75F5200FEF4F8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -200,10 +200,10 @@
 				519E7074249558D80038B1D7 /* GameScene.sks */,
 				519E7076249558D80038B1D7 /* Actions.sks */,
 				519E7078249558D80038B1D7 /* GameScene.swift */,
+				51258F9624EB760F00D99C01 /* GoogleService-Info.plist */,
 				519E707F249558DA0038B1D7 /* Assets.xcassets */,
 				519E7081249558DA0038B1D7 /* LaunchScreen.storyboard */,
 				519E7084249558DA0038B1D7 /* Info.plist */,
-				519E70982495713F0038B1D7 /* GoogleService-Info.plist */,
 				519E708A249558E40038B1D7 /* Storyboards */,
 			);
 			path = "Poker Trial 3";
@@ -327,13 +327,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				513B89E324CCC57100FC24B8 /* irlJoinGame.storyboard in Resources */,
+				51258F9724EB760F00D99C01 /* GoogleService-Info.plist in Resources */,
 				512F4FBE24D76D5D00887215 /* leaveWarning.storyboard in Resources */,
 				514CB67E24D75107002AE4C8 /* hostWarning.storyboard in Resources */,
 				519E707E249558D80038B1D7 /* Main.storyboard in Resources */,
 				513B89E924CCC9AF00FC24B8 /* irlCreateGame.storyboard in Resources */,
 				513B89EE24CCD3BF00FC24B8 /* irlGameTable.storyboard in Resources */,
 				514CB67C24D750E4002AE4C8 /* removeWarning.storyboard in Resources */,
-				519E70992495713F0038B1D7 /* GoogleService-Info.plist in Resources */,
 				519E709524955E230038B1D7 /* createGame.storyboard in Resources */,
 				519E7075249558D80038B1D7 /* GameScene.sks in Resources */,
 				512CBFA524D75A42001C7B43 /* settingsView.storyboard in Resources */,
@@ -558,12 +558,14 @@
 				CODE_SIGN_ENTITLEMENTS = "Poker Trial 3/Poker Trial 3.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.1;
 				DEVELOPMENT_TEAM = VRNSUP3X33;
 				INFOPLIST_FILE = "Poker Trial 3/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "Ronnak-Saxena.VDPoker123";
 				PRODUCT_NAME = "Virtual Deck Poker";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -580,12 +582,14 @@
 				CODE_SIGN_ENTITLEMENTS = "Poker Trial 3/Poker Trial 3.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.1;
 				DEVELOPMENT_TEAM = VRNSUP3X33;
 				INFOPLIST_FILE = "Poker Trial 3/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "Ronnak-Saxena.VDPoker123";
 				PRODUCT_NAME = "Virtual Deck Poker";
 				PROVISIONING_PROFILE_SPECIFIER = "";

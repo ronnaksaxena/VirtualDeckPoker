@@ -20,7 +20,7 @@
         <!--Irl Join Game-->
         <scene sceneID="l6R-g6-P1l">
             <objects>
-                <viewController storyboardIdentifier="irlJoinGame" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DjG-QS-pyD" customClass="irlJoinGame" customModule="Poker_Trial_3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="irlJoinGame" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DjG-QS-pyD" customClass="irlJoinGame" customModule="Virtual_Deck_Poker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IuD-wl-vyH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -51,11 +51,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j4m-RY-rv1" userLabel="backButton">
-                                <rect key="frame" x="20" y="64" width="69" height="62"/>
+                                <rect key="frame" x="10" y="64" width="57" height="52"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="arrow.left.square.fill" catalog="system">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="60"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="50"/>
                                 </state>
                                 <connections>
                                     <segue destination="vWG-mY-CVb" kind="show" id="Mun-Wj-Avi"/>
@@ -106,9 +106,9 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sp2-Ku-cxN" userLabel="errorLabel">
-                                <rect key="frame" x="32" y="508" width="350" height="200"/>
+                                <rect key="frame" x="32" y="497" width="350" height="100"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="FNa-1J-mZX"/>
+                                    <constraint firstAttribute="height" constant="100" id="FNa-1J-mZX"/>
                                     <constraint firstAttribute="width" constant="350" id="GbI-da-fA4"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="20"/>
@@ -131,11 +131,11 @@
                             <constraint firstItem="SVi-lv-Usj" firstAttribute="centerX" secondItem="IuD-wl-vyH" secondAttribute="centerX" id="A5I-Cd-I6X"/>
                             <constraint firstItem="Sp2-Ku-cxN" firstAttribute="centerX" secondItem="IuD-wl-vyH" secondAttribute="centerX" id="Au5-M8-WJw"/>
                             <constraint firstAttribute="bottom" secondItem="xXF-I5-pGf" secondAttribute="bottom" id="C7Z-Zb-wss"/>
-                            <constraint firstItem="Sp2-Ku-cxN" firstAttribute="centerY" secondItem="IuD-wl-vyH" secondAttribute="centerY" constant="160" id="COD-bI-1TB"/>
-                            <constraint firstItem="j4m-RY-rv1" firstAttribute="leading" secondItem="Kc5-3u-ucU" secondAttribute="leading" constant="20" id="GxU-e6-pBT"/>
+                            <constraint firstItem="j4m-RY-rv1" firstAttribute="leading" secondItem="Kc5-3u-ucU" secondAttribute="leading" constant="10" id="GxU-e6-pBT"/>
                             <constraint firstItem="SVi-lv-Usj" firstAttribute="top" secondItem="Kc5-3u-ucU" secondAttribute="top" constant="225" id="Nc7-tW-dD2"/>
                             <constraint firstItem="xXF-I5-pGf" firstAttribute="leading" secondItem="IuD-wl-vyH" secondAttribute="leading" id="S8K-3V-IAS"/>
                             <constraint firstItem="j4m-RY-rv1" firstAttribute="top" secondItem="Kc5-3u-ucU" secondAttribute="top" constant="20" id="SnB-vy-ERq"/>
+                            <constraint firstItem="Sp2-Ku-cxN" firstAttribute="top" secondItem="iPJ-om-a1u" secondAttribute="bottom" id="aGg-AF-dEO"/>
                             <constraint firstItem="iPJ-om-a1u" firstAttribute="centerY" secondItem="IuD-wl-vyH" secondAttribute="centerY" id="eZL-xw-Yef"/>
                             <constraint firstItem="UFy-Uu-cOh" firstAttribute="centerX" secondItem="IuD-wl-vyH" secondAttribute="centerX" id="ge8-6n-PWG"/>
                             <constraint firstAttribute="trailing" secondItem="xXF-I5-pGf" secondAttribute="trailing" id="pYU-NR-ehA"/>

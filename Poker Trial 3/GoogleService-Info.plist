@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>390188264815-gn1v6f1ch8khv20jca28au3oi974p777.apps.googleusercontent.com</string>
+	<string>390188264815-bpi2g3iqsksllvu189mja6ce6d2pild8.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.390188264815-gn1v6f1ch8khv20jca28au3oi974p777</string>
+	<string>com.googleusercontent.apps.390188264815-bpi2g3iqsksllvu189mja6ce6d2pild8</string>
 	<key>API_KEY</key>
 	<string>AIzaSyCMnwcLeC4476tbQ0Vg_fEZabh8xXcurVI</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,23 +13,23 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>Ronnak-Saxena.Poker-Trial-3</string>
+	<string>Ronnak-Saxena.VDPoker123</string>
 	<key>PROJECT_ID</key>
 	<string>poker-4e878</string>
 	<key>STORAGE_BUCKET</key>
 	<string>poker-4e878.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:390188264815:ios:9644f4576816ea52ce4c9a</string>
+	<string>1:390188264815:ios:bdc1d5d308d1582cce4c9a</string>
 	<key>DATABASE_URL</key>
 	<string>https://poker-4e878.firebaseio.com</string>
 </dict>

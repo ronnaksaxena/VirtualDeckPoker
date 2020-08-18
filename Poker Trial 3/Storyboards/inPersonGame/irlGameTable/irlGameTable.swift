@@ -961,7 +961,14 @@ class irlGameTable: UIViewController {
         
         //screen for host
         if inPersonPlayer.isHost == "true" {
-            leaveButton.isHidden = true
+            if inPersonPlayers.count < 2 {
+                settingsButton.isHidden = true
+                leaveButton.isHidden = false
+            }
+            else {
+                leaveButton.isHidden = true
+                settingsButton.isHidden = false
+            }
             dealButton.isHidden = true
             foldButton.isHidden = true
             waitingLabel.isHidden = true
@@ -1055,6 +1062,7 @@ class irlGameTable: UIViewController {
                     comCards[i]?.image = UIImage(named: inPersonRm.comCards[i+1])
                 }
             }
+            //new hand started
             else {
                 //resets room timer
                 self.resetTimer()
@@ -1064,6 +1072,18 @@ class irlGameTable: UIViewController {
                 for card in comCards {
                     card?.image = UIImage(named: "back")
                 }
+                //unfolds everyone on table view
+                for name in names {
+                    name?.isHidden = true
+                }
+                for i in stride(from: 0, to: inPersonPlayers.count, by: 1) {
+                    for j in stride(from: 0, to: names.count, by: 1) {
+                        if names[j]?.titleLabel?.text == inPersonPlayers[i]["name"] {
+                            names[j]?.isHidden = false
+                        }
+                    }
+                }
+                
                 //displays players cards
                 ref.child(inPersonRm.roomCode).child("roomPlayers").observeSingleEvent(of: .value, with: { (snapshot) in
                     guard let playersCopy = snapshot.value as? [[String:String]] else {
@@ -1123,6 +1143,16 @@ class irlGameTable: UIViewController {
                 }
             })
             
+            //changes leave to settings when someone joins
+            if inPersonPlayer.isHost == "true" && inPersonPlayers.count > 1{
+                self.leaveButton.isHidden = true
+                self.settingsButton.isHidden = false
+            }
+            else if inPersonPlayer.isHost == "true" && inPersonPlayers.count == 1{
+                self.leaveButton.isHidden = false
+                self.settingsButton.isHidden = true
+            }
+            
         })
         
         //observes players: if theres a new host or player folds
@@ -1157,7 +1187,6 @@ class irlGameTable: UIViewController {
                 }
             })
 
-            
             //updates inPersonPlayers
             ref.child(inPersonRm.roomCode).child("roomPlayers").observeSingleEvent(of: .value, with: { (snapshot) in
                 guard let playersCopy = snapshot.value as? [[String:String]] else {
@@ -1166,15 +1195,23 @@ class irlGameTable: UIViewController {
                 inPersonPlayers = playersCopy
                 inPersonRm.roomPlayers = inPersonPlayers
             })
+            
         })
         
-        //observes if player was added
-        ref.child(inPersonRm.roomCode).child("roomPlayers").observe(.childAdded, with: { firDataSnapshot in
+        
+        //observes if room was deleted
+        ref.child(inPersonRm.roomCode).observe(.childRemoved, with: { firDataSnapshot in
+            //segues to Main if room is deleted
+            let storyboard = UIStoryboard(name: "irlGameTable", bundle: nil)
+            let myVC = storyboard.instantiateViewController(withIdentifier: "Main")
+            self.present(myVC, animated: true, completion: nil)
+        })
+        
+        ref.child(inPersonRm.roomCode).child("roomPlayers").observe(.value, with: { firDataSnapshot in
             guard let playersCopy = firDataSnapshot.value as? [[String:String]] else{return}
             //updates variables
             inPersonPlayers = playersCopy
             inPersonRm.roomPlayers = inPersonPlayers
-            
             //adds name to table
             for i in stride(from: 0, through: 9, by: 1) {
                 names[i]?.isHidden = true
@@ -1187,17 +1224,16 @@ class irlGameTable: UIViewController {
                 }
                 names[i]?.setTitle(name, for: UIControl.State.normal)
             }
-        })
-        
-        //deletes room if no new hand is dealt for 60 minutes
-        startTimer()
-        
-        //observes if room was deleted
-        ref.child(inPersonRm.roomCode).observe(.childRemoved, with: { firDataSnapshot in
-            //segues to Main if room is deleted
-            let storyboard = UIStoryboard(name: "irlGameTable", bundle: nil)
-            let myVC = storyboard.instantiateViewController(withIdentifier: "Main")
-            self.present(myVC, animated: true, completion: nil)
+            
+            //changes leave to settings when someone joins
+            if inPersonPlayer.isHost == "true" && inPersonPlayers.count > 1{
+                self.leaveButton.isHidden = true
+                self.settingsButton.isHidden = false
+            }
+            else if inPersonPlayer.isHost == "true" && inPersonPlayers.count == 1{
+                self.leaveButton.isHidden = false
+                self.settingsButton.isHidden = true
+            }
         })
     }
 
