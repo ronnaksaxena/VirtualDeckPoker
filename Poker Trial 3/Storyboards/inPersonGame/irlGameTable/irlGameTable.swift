@@ -961,30 +961,73 @@ class irlGameTable: UIViewController {
         
         //screen for host
         if inPersonPlayer.isHost == "true" {
-            if inPersonPlayers.count < 2 {
-                settingsButton.isHidden = true
-                leaveButton.isHidden = false
+            //game not started
+            if inPersonRm.gameStarted == "false" {
+                //only the host in room
+                if inPersonPlayers.count < 2 {
+                    waitingLabel.isHidden = false
+                    waitingLabel.text = "Waiting for players to join🙏"
+                    settingsButton.isHidden = true
+                    leaveButton.isHidden = false
+                    handButton.isHidden = true
+                }
+                else {
+                    waitingLabel.isHidden = true
+                    leaveButton.isHidden = true
+                    settingsButton.isHidden = false
+                    handButton.isHidden = false
+                    
+                }
+                //hides everyone cards
+                for card in comCards {
+                    card?.isHidden = true
+                }
+                //hides everyones name
+                for i in stride(from: 1, through: 9, by: 1) {
+                    names[i]?.isHidden = true
+                }
+                handLabel.isHidden = true
+                dealButton.isHidden = true
+                foldButton.isHidden = true
             }
+            //game has started
             else {
-                leaveButton.isHidden = true
-                settingsButton.isHidden = false
+                dealButton.isHidden = false
+                foldButton.isHidden = false
+                handButton.isHidden = false
+                handLabel.isHidden = false
+                //shows com cards
+                for card in comCards {
+                    card?.isHidden = false
+                }
+                //shows everyones name
+                for i in stride(from: 1, through: 9, by: 1) {
+                    names[i]?.isHidden = false
+                }
+                for i in stride(from: 0, to: inPersonPlayers.count, by: 1) {
+                    if inPersonPlayer.name == inPersonPlayers[i]["name"] {
+                        card1.image = UIImage(named: inPersonPlayers[i]["card1"] ?? "00")
+                        card2.image = UIImage(named: inPersonPlayers[i]["card2"] ?? "00")
+                    }
+                }
             }
-            dealButton.isHidden = true
-            foldButton.isHidden = true
-            waitingLabel.isHidden = true
+
+            
             name1.setTitle(inPersonPlayer.name, for: UIControl.State.normal)
-            for card in comCards {
-                card?.isHidden = true
-            }
-            for i in stride(from: 1, through: 9, by: 1) {
-                names[i]?.isHidden = true
-            }
-            handLabel.isHidden = true
             roomCode.text = "Room Code:\n\(inPersonRm.roomCode)"
         }
+        //player is not host
         else {
             if inPersonRm.gameStarted == "false" {
                 waitingLabel.isHidden = false
+            }
+            else {
+                for i in stride(from: 0, to: inPersonPlayers.count, by: 1) {
+                    if inPersonPlayer.name == inPersonPlayers[i]["name"] {
+                        card1.image = UIImage(named: inPersonPlayers[i]["card1"] ?? "00")
+                        card2.image = UIImage(named: inPersonPlayers[i]["card2"] ?? "00")
+                    }
+                }
             }
             settingsButton.isHidden = true
             dealButton.isHidden = true
@@ -1005,6 +1048,10 @@ class irlGameTable: UIViewController {
                 }
                 names[i]?.setTitle(name, for: UIControl.State.normal)
             }
+            //shows com cards
+            for card in comCards {
+                card?.isHidden = false
+            }
             //checks for folded players
             let names = [name1, name2, name3, name4, name5, name6, name7, name8, name9, name10]
             for i in stride(from: 0, to: inPersonPlayers.count, by: 1) {
@@ -1013,6 +1060,22 @@ class irlGameTable: UIViewController {
                         if names[j]?.titleLabel?.text == inPersonPlayers[i]["name"] {
                             names[j]?.isHidden = true
                         }
+                    }
+                }
+            }
+            //checks if player if folded
+            if inPersonPlayer.isFolded == "true" {
+                //make cards grey and transparent
+                guard let grey1 = card1.image else {return}
+                let card1Grey = getGreyImage(myImage: grey1)
+                card1.image = card1Grey.alpha(0.5)
+                guard let grey2 = card2.image else {return}
+                let card2Grey = getGreyImage(myImage: grey2)
+                card2.image = card2Grey.alpha(0.5)
+                //hiding inPersonPlayer's name if they folded
+                for i in stride(from: 0, to: inPersonPlayers.count, by: 1) {
+                    if inPersonPlayers[i]["name"] == inPersonPlayer.name {
+                        names[i]?.isHidden = true
                     }
                 }
             }
@@ -1027,6 +1090,22 @@ class irlGameTable: UIViewController {
             if inPersonRm.gameStarted == "true" {
                 self.waitingLabel.isHidden = true
                 self.foldButton.isHidden = false
+                //shows com cards
+                for card in comCards {
+                    card?.isHidden = false
+                }
+            }
+            else {
+                self.waitingLabel.isHidden = false
+                //hides everyone cards
+                for card in comCards {
+                    card?.isHidden = true
+                }
+                self.handLabel.isHidden = true
+                self.dealButton.isHidden = true
+                self.foldButton.isHidden = true
+                self.card1.image = UIImage(named:"back")
+                self.card2.image = UIImage(named:"back")
             }
         })
         
@@ -1170,6 +1249,7 @@ class irlGameTable: UIViewController {
                             if inPersonRm.gameStarted == "true" {
                                 self.dealButton.isHidden = false
                             }
+                            inPersonPlayer.isHost = "true"
                         }
                     }
                 }
@@ -1225,14 +1305,20 @@ class irlGameTable: UIViewController {
                 names[i]?.setTitle(name, for: UIControl.State.normal)
             }
             
-            //changes leave to settings when someone joins
+            //changes leave to settings when someone joins & updates waiting label
             if inPersonPlayer.isHost == "true" && inPersonPlayers.count > 1{
                 self.leaveButton.isHidden = true
                 self.settingsButton.isHidden = false
+                self.handButton.isHidden = false
+                self.waitingLabel.isHidden = true
             }
             else if inPersonPlayer.isHost == "true" && inPersonPlayers.count == 1{
                 self.leaveButton.isHidden = false
                 self.settingsButton.isHidden = true
+                self.handButton.isHidden = true
+                self.waitingLabel.isHidden = false
+                let ref = Database.database().reference()
+                ref.child(inPersonRm.roomCode).child("gameStarted").setValue("false")
             }
         })
     }

@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -36,7 +38,7 @@
         <!--settingsView-->
         <scene sceneID="EFk-ob-IM4">
             <objects>
-                <viewController storyboardIdentifier="settingsView" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="0FO-zL-tug" userLabel="settingsView" customClass="settingsView" customModule="Poker_Trial_3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="settingsView" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="0FO-zL-tug" userLabel="settingsView" customClass="settingsView" customModule="Virtual_Deck_Poker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w7e-Wz-V3k">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -51,7 +53,7 @@
                                     <constraint firstAttribute="height" constant="75" id="LRv-WG-UTz"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="arrowshape.turn.up.left.fill" catalog="system">
+                                <state key="normal" image="arrow.left.square.fill" catalog="system">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="50"/>
                                 </state>
@@ -75,7 +77,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="3a6-mC-SkF">
                                 <rect key="frame" x="107" y="176.5" width="200" height="463"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m5f-6X-SRp" userLabel="name1">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m5f-6X-SRp" userLabel="name1">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="47"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="oeR-Kr-8zK"/>
@@ -88,7 +90,7 @@
                                             <action selector="tapName1:" destination="0FO-zL-tug" eventType="touchUpInside" id="lAx-0q-HAj"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sqF-Ro-Zud" userLabel="name2">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sqF-Ro-Zud" userLabel="name2">
                                         <rect key="frame" x="0.0" y="52" width="200" height="47"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="JaV-uc-o74"/>
@@ -101,7 +103,7 @@
                                             <action selector="tapName2:" destination="0FO-zL-tug" eventType="touchUpInside" id="OhV-rv-t1G"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9XT-Lf-p2k" userLabel="name3">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9XT-Lf-p2k" userLabel="name3">
                                         <rect key="frame" x="0.0" y="104" width="200" height="47"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="XT5-kS-toP"/>
@@ -114,7 +116,7 @@
                                             <action selector="tapName3:" destination="0FO-zL-tug" eventType="touchUpInside" id="OvO-bH-0Yf"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J4p-J5-FXG" userLabel="name4">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J4p-J5-FXG" userLabel="name4">
                                         <rect key="frame" x="0.0" y="156" width="200" height="47"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="tO9-Vt-9u6"/>
@@ -127,7 +129,7 @@
                                             <action selector="tapName4:" destination="0FO-zL-tug" eventType="touchUpInside" id="1jo-wH-9Pi"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C1V-eZ-w4u" userLabel="name5">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C1V-eZ-w4u" userLabel="name5">
                                         <rect key="frame" x="0.0" y="208" width="200" height="47"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="Dvc-XK-tHf"/>
@@ -140,7 +142,7 @@
                                             <action selector="tapName5:" destination="0FO-zL-tug" eventType="touchUpInside" id="yGN-4f-L3j"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Shh-fa-F7Z" userLabel="name6">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Shh-fa-F7Z" userLabel="name6">
                                         <rect key="frame" x="0.0" y="260" width="200" height="47"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="LOA-3g-l3k"/>
@@ -153,7 +155,7 @@
                                             <action selector="tapName6:" destination="0FO-zL-tug" eventType="touchUpInside" id="acw-df-cLI"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5zm-Ht-4ub" userLabel="name7">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5zm-Ht-4ub" userLabel="name7">
                                         <rect key="frame" x="0.0" y="312" width="200" height="47"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="fqw-rs-7Kj"/>
@@ -166,7 +168,7 @@
                                             <action selector="tapName7:" destination="0FO-zL-tug" eventType="touchUpInside" id="cOU-nN-egy"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JW6-y8-g2o" userLabel="name8">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JW6-y8-g2o" userLabel="name8">
                                         <rect key="frame" x="0.0" y="364" width="200" height="47"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="yk7-i8-qPa"/>
@@ -179,7 +181,7 @@
                                             <action selector="tapName8:" destination="0FO-zL-tug" eventType="touchUpInside" id="sTA-HV-QjM"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GBK-U8-LUM" userLabel="name9">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GBK-U8-LUM" userLabel="name9">
                                         <rect key="frame" x="0.0" y="416" width="200" height="47"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="QDI-vE-ddy"/>
@@ -197,7 +199,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="fOY-Es-c0b">
                                 <rect key="frame" x="82" y="672" width="250" height="150"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Qg-ra-m2y" userLabel="removeButton">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Qg-ra-m2y" userLabel="removeButton">
                                         <rect key="frame" x="0.0" y="0.0" width="250" height="71"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="71" id="E6b-YB-YK5"/>
@@ -213,7 +215,7 @@
                                             <action selector="tapRemoveButton:" destination="0FO-zL-tug" eventType="touchUpInside" id="qAp-df-p2N"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ieT-5U-gyV" userLabel="hostButton">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ieT-5U-gyV" userLabel="hostButton">
                                         <rect key="frame" x="0.0" y="79" width="250" height="71"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="250" id="6cp-hG-HUQ"/>
@@ -232,7 +234,8 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="8eE-ss-xAU"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="wD2-1O-52r" firstAttribute="top" secondItem="8eE-ss-xAU" secondAttribute="top" id="0ec-ci-RVc"/>
                             <constraint firstItem="8eE-ss-xAU" firstAttribute="bottom" secondItem="fOY-Es-c0b" secondAttribute="bottom" constant="40" id="23K-5D-uK7"/>
@@ -253,7 +256,6 @@
                             <constraint firstItem="hfV-aV-pNE" firstAttribute="top" secondItem="w7e-Wz-V3k" secondAttribute="top" id="tXe-F6-wUj"/>
                             <constraint firstItem="p5b-u4-WpU" firstAttribute="centerX" secondItem="w7e-Wz-V3k" secondAttribute="centerX" constant="6.25" id="xeP-Qo-2FC"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="8eE-ss-xAU"/>
                     </view>
                     <connections>
                         <outlet property="hostButton" destination="ieT-5U-gyV" id="la4-un-j3V"/>
@@ -275,7 +277,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrowshape.turn.up.left.fill" catalog="system" width="128" height="106"/>
+        <image name="arrow.left.square.fill" catalog="system" width="128" height="114"/>
         <image name="iPhone5-Retina-HD-Wallpapers-11" width="640" height="1136"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

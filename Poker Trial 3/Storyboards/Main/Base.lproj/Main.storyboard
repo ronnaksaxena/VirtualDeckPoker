@@ -30,7 +30,7 @@
         <!--online-->
         <scene sceneID="cBQ-Vi-nIe">
             <objects>
-                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="cTw-LY-n9n" userLabel="online" customClass="online" customModule="Poker_Trial_3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="cTw-LY-n9n" userLabel="online" customClass="online" customModule="Virtual_Deck_Poker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oUY-4h-0Sf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -128,7 +128,7 @@
         <!--InPerson-->
         <scene sceneID="c6v-KC-AQ4">
             <objects>
-                <viewController title="inPerson" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="o4H-9W-4wT" userLabel="InPerson" customClass="inPerson" customModule="Poker_Trial_3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="inPerson" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="o4H-9W-4wT" userLabel="InPerson" customClass="inPerson" customModule="Virtual_Deck_Poker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jih-1c-gtu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -229,7 +229,7 @@
         <!--Main-->
         <scene sceneID="nj2-y3-X75">
             <objects>
-                <tabBarController storyboardIdentifier="Main" title="Main" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="DxB-QS-ZCF" customClass="Main" customModule="Poker_Trial_3" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="Main" title="Main" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="DxB-QS-ZCF" customClass="Main" customModule="Virtual_Deck_Poker" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="JTF-i7-0hz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
