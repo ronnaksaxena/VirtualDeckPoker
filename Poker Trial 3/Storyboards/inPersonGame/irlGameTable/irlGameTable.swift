@@ -918,6 +918,7 @@ class irlGameTable: UIViewController {
         // reference to server
         let ref = Database.database().reference()
         
+        
         //(218,165,32) golden rod
         //(139,0,0) dark red
         //(65,105,225) royal blue
@@ -957,7 +958,11 @@ class irlGameTable: UIViewController {
         //groups to use later
         let comCards = [flop1, flop2, flop3, turn, river]
         let names = [name1, name2, name3, name4, name5, name6, name7, name8, name9, name10]
-        
+        //for debug
+        print(inPersonPlayers)
+        print(inPersonRm.roomPlayers)
+        print(inPersonPlayer.isFolded)
+        print(inPersonPlayer.isHost)
         
         //screen for host
         if inPersonPlayer.isHost == "true" {
@@ -978,7 +983,7 @@ class irlGameTable: UIViewController {
                     handButton.isHidden = false
                     
                 }
-                //hides everyone cards
+                //hides Comcards
                 for card in comCards {
                     card?.isHidden = true
                 }
@@ -1041,44 +1046,34 @@ class irlGameTable: UIViewController {
                 names[i]?.isHidden = true
             }
             for i in stride(from: 0, through: inPersonPlayers.count - 1, by: 1) {
-                names[i]?.isHidden = false
+                guard let isFolded = inPersonPlayers[i]["isFolded"] else {
+                    print("Error here")
+                    return
+                }
                 guard let name = inPersonPlayers[i]["name"] else {
                     print("Error here")
                     return
                 }
                 names[i]?.setTitle(name, for: UIControl.State.normal)
+                if isFolded == "false" {
+                    print("here")
+                    names[i]?.isHidden = false
+                }
             }
             //shows com cards
             for card in comCards {
                 card?.isHidden = false
             }
-            //checks for folded players
-            let names = [name1, name2, name3, name4, name5, name6, name7, name8, name9, name10]
-            for i in stride(from: 0, to: inPersonPlayers.count, by: 1) {
-                if inPersonPlayers[i]["isFolded"] == "true" {
-                    for j in stride(from: 0, to: names.count, by: 1) {
-                        if names[j]?.titleLabel?.text == inPersonPlayers[i]["name"] {
-                            names[j]?.isHidden = true
-                        }
-                    }
-                }
-            }
-            //checks if player if folded
-            if inPersonPlayer.isFolded == "true" {
-                //make cards grey and transparent
-                guard let grey1 = card1.image else {return}
-                let card1Grey = getGreyImage(myImage: grey1)
-                card1.image = card1Grey.alpha(0.5)
-                guard let grey2 = card2.image else {return}
-                let card2Grey = getGreyImage(myImage: grey2)
-                card2.image = card2Grey.alpha(0.5)
-                //hiding inPersonPlayer's name if they folded
-                for i in stride(from: 0, to: inPersonPlayers.count, by: 1) {
-                    if inPersonPlayers[i]["name"] == inPersonPlayer.name {
-                        names[i]?.isHidden = true
-                    }
-                }
-            }
+        }
+        //checks if player if folded
+        if inPersonPlayer.isFolded == "true" {
+            //make cards grey and transparent
+            guard let grey1 = self.card1.image else {return}
+            let card1Grey = self.getGreyImage(myImage: grey1)
+            self.card1.image = card1Grey.alpha(0.5)
+            guard let grey2 = self.card2.image else {return}
+            let card2Grey = self.getGreyImage(myImage: grey2)
+            self.card2.image = card2Grey.alpha(0.5)
         }
         
         //check if game started
@@ -1143,6 +1138,8 @@ class irlGameTable: UIViewController {
             }
             //new hand started
             else {
+                //since new hand means everyone's not folded
+                inPersonPlayer.isFolded = "false"
                 //resets room timer
                 self.resetTimer()
                 
@@ -1297,12 +1294,15 @@ class irlGameTable: UIViewController {
                 names[i]?.isHidden = true
             }
             for i in stride(from: 0, through: inPersonPlayers.count - 1, by: 1) {
-                names[i]?.isHidden = false
-                guard let name = inPersonPlayers[i]["name"] else {
-                    print("Error here")
-                    return
+                if inPersonPlayers[i]["isFolded"]=="false" {
+                    names[i]?.isHidden = false
+                    guard let name = inPersonPlayers[i]["name"] else {
+                        print("Error here")
+                        return
+                    }
+                    names[i]?.setTitle(name, for: UIControl.State.normal)
+                    print(name)
                 }
-                names[i]?.setTitle(name, for: UIControl.State.normal)
             }
             
             //changes leave to settings when someone joins & updates waiting label
