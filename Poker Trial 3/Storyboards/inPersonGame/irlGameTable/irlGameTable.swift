@@ -958,11 +958,6 @@ class irlGameTable: UIViewController {
         //groups to use later
         let comCards = [flop1, flop2, flop3, turn, river]
         let names = [name1, name2, name3, name4, name5, name6, name7, name8, name9, name10]
-        //for debug
-        print(inPersonPlayers)
-        print(inPersonRm.roomPlayers)
-        print(inPersonPlayer.isFolded)
-        print(inPersonPlayer.isHost)
         
         //screen for host
         if inPersonPlayer.isHost == "true" {
@@ -1056,7 +1051,6 @@ class irlGameTable: UIViewController {
                 }
                 names[i]?.setTitle(name, for: UIControl.State.normal)
                 if isFolded == "false" {
-                    print("here")
                     names[i]?.isHidden = false
                 }
             }
@@ -1138,8 +1132,17 @@ class irlGameTable: UIViewController {
             }
             //new hand started
             else {
-                //since new hand means everyone's not folded
-                inPersonPlayer.isFolded = "false"
+                //keeps player folded each hand if they are folded
+                for player in inPersonPlayers {
+                    if player["name"]==inPersonPlayer.name{
+                        if player["isFolded"]=="true" {
+                            inPersonPlayer.isFolded = "true"
+                        }
+                        else {
+                            inPersonPlayer.isFolded = "false"
+                        }
+                    }
+                }
                 //resets room timer
                 self.resetTimer()
                 
@@ -1176,6 +1179,15 @@ class irlGameTable: UIViewController {
                             inPersonPlayer.card2 = stringToCard(str: card2Val)
                             self.card1.image = UIImage(named: card1Val)
                             self.card2.image = UIImage(named: card2Val)
+                            //makes their cards grey is they're folded
+                            if player["isFolded"] == "true" {
+                                guard let grey1 = self.card1.image else {return}
+                                let card1Grey = self.getGreyImage(myImage: grey1)
+                                self.card1.image = card1Grey.alpha(0.5)
+                                guard let grey2 = self.card2.image else {return}
+                                let card2Grey = self.getGreyImage(myImage: grey2)
+                                self.card2.image = card2Grey.alpha(0.5)
+                            }
                         }
                     }
                 })
@@ -1301,7 +1313,6 @@ class irlGameTable: UIViewController {
                         return
                     }
                     names[i]?.setTitle(name, for: UIControl.State.normal)
-                    print(name)
                 }
             }
             
@@ -1317,6 +1328,7 @@ class irlGameTable: UIViewController {
                 self.settingsButton.isHidden = true
                 self.handButton.isHidden = true
                 self.waitingLabel.isHidden = false
+                self.handLabel.isHidden = true
                 let ref = Database.database().reference()
                 ref.child(inPersonRm.roomCode).child("gameStarted").setValue("false")
             }
@@ -1413,36 +1425,39 @@ class irlGameTable: UIViewController {
     
     
     @IBAction func tapFold(_ sender: Any) {
-        //plays folding sound
-        do {
-        audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: foldSound!))
-        }
-        catch {
-            print("error")
-        }
-        //make cards grey and transparent
-        guard let grey1 = card1.image else {return}
-        let card1Grey = getGreyImage(myImage: grey1)
-        card1.image = card1Grey.alpha(0.5)
-        guard let grey2 = card2.image else {return}
-        let card2Grey = getGreyImage(myImage: grey2)
-        card2.image = card2Grey.alpha(0.5)
-        
-        //update variables & server
-        inPersonPlayer.isFolded = "true"
-        for i in stride(from: 0, to: inPersonPlayers.count, by: 1) {
-            if inPersonPlayers[i]["name"] == inPersonPlayer.name {
-                inPersonPlayers[i]["isFolded"] = "true"
+        print(inPersonPlayer.isFolded)
+        if inPersonPlayer.isFolded == "false" {
+            //plays folding sound
+            do {
+            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: foldSound!))
             }
-        }
-        let ref = Database.database().reference()
-        ref.child(inPersonRm.roomCode).child("roomPlayers").setValue(inPersonPlayers)
-        
-        //update players at table
-        let names = [name1, name2, name3, name4, name5, name6, name7, name8, name9, name10]
-        for i in stride(from: 0, through: 9, by: 1) {
-            if names[i]?.titleLabel?.text == inPersonPlayer.name {
-                names[i]?.isHidden = true
+            catch {
+                print("error")
+            }
+            //make cards grey and transparent
+            guard let grey1 = card1.image else {return}
+            let card1Grey = getGreyImage(myImage: grey1)
+            card1.image = card1Grey.alpha(0.5)
+            guard let grey2 = card2.image else {return}
+            let card2Grey = getGreyImage(myImage: grey2)
+            card2.image = card2Grey.alpha(0.5)
+            
+            //update variables & server
+            inPersonPlayer.isFolded = "true"
+            for i in stride(from: 0, to: inPersonPlayers.count, by: 1) {
+                if inPersonPlayers[i]["name"] == inPersonPlayer.name {
+                    inPersonPlayers[i]["isFolded"] = "true"
+                }
+            }
+            let ref = Database.database().reference()
+            ref.child(inPersonRm.roomCode).child("roomPlayers").setValue(inPersonPlayers)
+            
+            //update players at table
+            let names = [name1, name2, name3, name4, name5, name6, name7, name8, name9, name10]
+            for i in stride(from: 0, through: 9, by: 1) {
+                if names[i]?.titleLabel?.text == inPersonPlayer.name {
+                    names[i]?.isHidden = true
+                }
             }
         }
     }
