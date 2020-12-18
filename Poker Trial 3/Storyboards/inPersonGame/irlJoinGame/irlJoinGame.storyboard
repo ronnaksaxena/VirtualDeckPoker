@@ -46,12 +46,6 @@
                                     <action selector="tapJoin:" destination="DjG-QS-pyD" eventType="touchUpInside" id="IqU-LG-Iul"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In Person Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SVi-lv-Usj">
-                                <rect key="frame" x="109" y="269" width="196" height="35"/>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="30"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j4m-RY-rv1" userLabel="backButton">
                                 <rect key="frame" x="10" y="64" width="57" height="52"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -122,10 +116,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Virtual Deck Poker_sata-1" translatesAutoresizingMaskIntoConstraints="NO" id="xlj-Iu-l9W">
-                                <rect key="frame" x="-18" y="64" width="450" height="200"/>
+                                <rect key="frame" x="-93" y="64" width="600" height="300"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="450" id="DRT-de-Zjh"/>
-                                    <constraint firstAttribute="height" constant="200" id="GZG-MZ-S2x"/>
+                                    <constraint firstAttribute="width" constant="600" id="DRT-de-Zjh"/>
+                                    <constraint firstAttribute="height" constant="300" id="GZG-MZ-S2x"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -135,11 +129,9 @@
                             <constraint firstItem="Kc5-3u-ucU" firstAttribute="bottom" secondItem="UFy-Uu-cOh" secondAttribute="bottom" constant="100" id="0f1-jW-5hr"/>
                             <constraint firstItem="xXF-I5-pGf" firstAttribute="top" secondItem="IuD-wl-vyH" secondAttribute="top" id="1zk-7A-f28"/>
                             <constraint firstItem="xlj-Iu-l9W" firstAttribute="top" secondItem="Kc5-3u-ucU" secondAttribute="top" constant="20" id="8x3-1d-jju"/>
-                            <constraint firstItem="SVi-lv-Usj" firstAttribute="centerX" secondItem="IuD-wl-vyH" secondAttribute="centerX" id="A5I-Cd-I6X"/>
                             <constraint firstItem="Sp2-Ku-cxN" firstAttribute="centerX" secondItem="IuD-wl-vyH" secondAttribute="centerX" id="Au5-M8-WJw"/>
                             <constraint firstAttribute="bottom" secondItem="xXF-I5-pGf" secondAttribute="bottom" id="C7Z-Zb-wss"/>
                             <constraint firstItem="j4m-RY-rv1" firstAttribute="leading" secondItem="Kc5-3u-ucU" secondAttribute="leading" constant="10" id="GxU-e6-pBT"/>
-                            <constraint firstItem="SVi-lv-Usj" firstAttribute="top" secondItem="Kc5-3u-ucU" secondAttribute="top" constant="225" id="Nc7-tW-dD2"/>
                             <constraint firstItem="xXF-I5-pGf" firstAttribute="leading" secondItem="IuD-wl-vyH" secondAttribute="leading" id="S8K-3V-IAS"/>
                             <constraint firstItem="j4m-RY-rv1" firstAttribute="top" secondItem="Kc5-3u-ucU" secondAttribute="top" constant="20" id="SnB-vy-ERq"/>
                             <constraint firstItem="Sp2-Ku-cxN" firstAttribute="top" secondItem="iPJ-om-a1u" secondAttribute="bottom" id="aGg-AF-dEO"/>

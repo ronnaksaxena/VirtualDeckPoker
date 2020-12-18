@@ -45,6 +45,8 @@ struct irlRoom {
 var inPersonPlayer = irlPlayer(name: "", isHost:"true")
 var inPersonPlayers:[[String:String]] = []
 var inPersonRm = irlRoom(players:inPersonPlayers)
+//for checking repeat sounds
+var numOfDeals: Int = 0
 
 class irlCreateGame: UIViewController, UITextFieldDelegate {
     
@@ -106,7 +108,8 @@ class irlCreateGame: UIViewController, UITextFieldDelegate {
             
             //updates new key in server
             let ref = Database.database().reference()
-            ref.child(inPersonRm.roomCode).setValue(["roomPlayers": inPersonPlayers, "gameStarted":"false","comCards":["P", "00", "00", "00", "00", "00"]])
+            let timeStamp = Date().timeIntervalSince1970
+            ref.child(inPersonRm.roomCode).setValue(["roomPlayers": inPersonPlayers, "gameStarted":"false","comCards":["P", "00", "00", "00", "00", "00"], "timeStamp":timeStamp])
                 
             //segues to storyboard reference
             let storyboard = UIStoryboard(name: "irlCreateGame", bundle: nil)

@@ -892,9 +892,10 @@ class irlGameTable: UIViewController {
     //deck class for dealing
     var rmDeck:Deck = Deck()
     //sounds
-    var audioPlayer = AVAudioPlayer()
+    var audioPlayer: AVAudioPlayer?
     let foldSound = Bundle.main.path(forResource: "foldSound", ofType: "wav")
     let dealSound = Bundle.main.path(forResource: "dealSound", ofType: "wav")
+    var curHand: String = inPersonRm.comCards[0]
     
     //function to delete room when time elapses
     @objc func deleteRoom() -> Void {
@@ -978,10 +979,7 @@ class irlGameTable: UIViewController {
                     handButton.isHidden = false
                     
                 }
-                //hides Comcards
-                for card in comCards {
-                    card?.isHidden = true
-                }
+                
                 //hides everyones name
                 for i in stride(from: 1, through: 9, by: 1) {
                     names[i]?.isHidden = true
@@ -996,10 +994,7 @@ class irlGameTable: UIViewController {
                 foldButton.isHidden = false
                 handButton.isHidden = false
                 handLabel.isHidden = false
-                //shows com cards
-                for card in comCards {
-                    card?.isHidden = false
-                }
+                
                 //shows everyones name
                 for i in stride(from: 1, through: 9, by: 1) {
                     names[i]?.isHidden = false
@@ -1054,10 +1049,6 @@ class irlGameTable: UIViewController {
                     names[i]?.isHidden = false
                 }
             }
-            //shows com cards
-            for card in comCards {
-                card?.isHidden = false
-            }
         }
         //checks if player if folded
         if inPersonPlayer.isFolded == "true" {
@@ -1079,17 +1070,9 @@ class irlGameTable: UIViewController {
             if inPersonRm.gameStarted == "true" {
                 self.waitingLabel.isHidden = true
                 self.foldButton.isHidden = false
-                //shows com cards
-                for card in comCards {
-                    card?.isHidden = false
-                }
             }
             else {
                 self.waitingLabel.isHidden = false
-                //hides everyone cards
-                for card in comCards {
-                    card?.isHidden = true
-                }
                 self.handLabel.isHidden = true
                 self.dealButton.isHidden = true
                 self.foldButton.isHidden = true
@@ -1104,14 +1087,32 @@ class irlGameTable: UIViewController {
                 return
             }
             inPersonRm.comCards = val
+            //To stop repeats sounds
+            var partOfHand:Int = 0
+            switch inPersonRm.comCards[0] {
+            case "P":
+                partOfHand = 0
+            case "F":
+                partOfHand = 1
+            case "T":
+                partOfHand = 2
+            default:
+                partOfHand = 3
+            }
+            
             if inPersonRm.comCards[0] != "P" {
                 self.handLabel.isHidden = false
                 //plays deal sound
-                do {
-                    self.audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: self.dealSound!))
-                }
-                catch {
-                    print("error")
+                if (inPersonRm.comCards[0] != self.curHand) && (numOfDeals != partOfHand) {
+                    do {
+                        self.audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: self.dealSound!))
+                        self.audioPlayer?.play()
+                        numOfDeals += 1
+                    }
+                    catch {
+                        print("error")
+                    }
+                    self.curHand = inPersonRm.comCards[0]
                 }
                 var cardsShown:Int = 0
                 if inPersonRm.comCards[0] == "F" {
@@ -1132,6 +1133,8 @@ class irlGameTable: UIViewController {
             }
             //new hand started
             else {
+                self.curHand = "P"
+                numOfDeals = 0
                 //keeps player folded each hand if they are folded
                 for player in inPersonPlayers {
                     if player["name"]==inPersonPlayer.name{
@@ -1425,11 +1428,11 @@ class irlGameTable: UIViewController {
     
     
     @IBAction func tapFold(_ sender: Any) {
-        print(inPersonPlayer.isFolded)
         if inPersonPlayer.isFolded == "false" {
             //plays folding sound
             do {
-            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: foldSound!))
+                audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: foldSound!))
+                audioPlayer?.play()
             }
             catch {
                 print("error")

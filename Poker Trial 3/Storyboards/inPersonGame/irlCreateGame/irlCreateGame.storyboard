@@ -41,12 +41,6 @@
                                     <segue destination="an3-G2-4qW" kind="show" id="CTf-qi-iTN"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In Person Mode" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zgq-0H-nri">
-                                <rect key="frame" x="109" y="269" width="196" height="35"/>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="30"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="1CT-vD-dTG">
                                 <rect key="frame" x="49" y="430.66666666666669" width="316.33333333333331" height="35"/>
                                 <subviews>
@@ -95,10 +89,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Virtual Deck Poker_sata-1" translatesAutoresizingMaskIntoConstraints="NO" id="sbX-Ih-3ny">
-                                <rect key="frame" x="-18" y="64" width="450" height="200"/>
+                                <rect key="frame" x="-93" y="64" width="600" height="300"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="450" id="6Oa-Vd-2Pm"/>
-                                    <constraint firstAttribute="height" constant="200" id="eDq-uD-8oN"/>
+                                    <constraint firstAttribute="width" constant="600" id="6Oa-Vd-2Pm"/>
+                                    <constraint firstAttribute="height" constant="300" id="eDq-uD-8oN"/>
                                 </constraints>
                             </imageView>
                         </subviews>
@@ -109,11 +103,9 @@
                             <constraint firstItem="7E0-4z-NeS" firstAttribute="centerX" secondItem="YqQ-QV-PSG" secondAttribute="centerX" id="2rD-ET-YOL"/>
                             <constraint firstItem="MvI-el-4tJ" firstAttribute="top" secondItem="YqQ-QV-PSG" secondAttribute="top" id="5Gn-db-xaj"/>
                             <constraint firstItem="24D-Ic-wMt" firstAttribute="bottom" secondItem="p4v-Dz-ui3" secondAttribute="bottom" constant="100" id="93K-nt-Ztw"/>
-                            <constraint firstItem="zgq-0H-nri" firstAttribute="top" secondItem="24D-Ic-wMt" secondAttribute="top" constant="225" id="Bgu-UZ-TNX"/>
                             <constraint firstItem="MvI-el-4tJ" firstAttribute="leading" secondItem="YqQ-QV-PSG" secondAttribute="leading" id="KnR-yL-r4x"/>
                             <constraint firstItem="7E0-4z-NeS" firstAttribute="top" secondItem="1CT-vD-dTG" secondAttribute="bottom" id="QiK-tz-Shi"/>
                             <constraint firstItem="1CT-vD-dTG" firstAttribute="centerY" secondItem="YqQ-QV-PSG" secondAttribute="centerY" id="Y9O-Mm-NgF"/>
-                            <constraint firstItem="zgq-0H-nri" firstAttribute="centerX" secondItem="YqQ-QV-PSG" secondAttribute="centerX" id="erG-cD-jDP"/>
                             <constraint firstItem="p4v-Dz-ui3" firstAttribute="centerX" secondItem="YqQ-QV-PSG" secondAttribute="centerX" id="nMO-FE-7GS"/>
                             <constraint firstItem="sbX-Ih-3ny" firstAttribute="centerX" secondItem="YqQ-QV-PSG" secondAttribute="centerX" id="nRj-Bf-Nmn"/>
                             <constraint firstItem="ta9-nR-t5t" firstAttribute="leading" secondItem="24D-Ic-wMt" secondAttribute="leading" constant="10" id="tLO-1I-dfy"/>
