@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_5" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -24,14 +24,14 @@
             <objects>
                 <viewController storyboardIdentifier="irlCreateGame" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="rp7-f6-K4s" customClass="irlCreateGame" customModule="Virtual_Deck_Poker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YqQ-QV-PSG">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="MvI-el-4tJ">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ta9-nR-t5t" userLabel="backButton">
-                                <rect key="frame" x="9.9999999999999964" y="64" width="57.666666666666657" height="51.666666666666657"/>
+                                <rect key="frame" x="10" y="20" width="57" height="52"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="arrow.left.square.fill" catalog="system">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -42,16 +42,16 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="1CT-vD-dTG">
-                                <rect key="frame" x="49" y="430.66666666666669" width="316.33333333333331" height="35"/>
+                                <rect key="frame" x="29.5" y="316" width="316.5" height="35"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter Name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7cu-46-awN">
-                                        <rect key="frame" x="0.0" y="0.0" width="158.33333333333334" height="35"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="158.5" height="35"/>
                                         <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="30"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H0u-in-xFK" userLabel="name">
-                                        <rect key="frame" x="166.33333333333334" y="0.0" width="150.00000000000003" height="35"/>
+                                        <rect key="frame" x="166.5" y="0.0" width="150" height="35"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="Gx7-A9-cbk"/>
@@ -64,7 +64,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p4v-Dz-ui3" userLabel="createGameButton">
-                                <rect key="frame" x="44.666666666666657" y="691" width="325" height="71"/>
+                                <rect key="frame" x="25" y="496" width="325" height="71"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="325" id="baq-Ww-5bG"/>
                                 </constraints>
@@ -79,7 +79,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7E0-4z-NeS" userLabel="errorLabel">
-                                <rect key="frame" x="32" y="465.66666666666674" width="350" height="100"/>
+                                <rect key="frame" x="12.5" y="351" width="350" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="0qh-7G-6vs"/>
                                     <constraint firstAttribute="width" constant="350" id="be1-nS-dL5"/>
@@ -89,12 +89,28 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Virtual Deck Poker_sata-1" translatesAutoresizingMaskIntoConstraints="NO" id="sbX-Ih-3ny">
-                                <rect key="frame" x="-93" y="64" width="600" height="300"/>
+                                <rect key="frame" x="-112.5" y="20" width="600" height="250"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="600" id="6Oa-Vd-2Pm"/>
-                                    <constraint firstAttribute="height" constant="300" id="eDq-uD-8oN"/>
+                                    <constraint firstAttribute="height" constant="250" id="eDq-uD-8oN"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Dg-1e-gUv">
+                                <rect key="frame" x="205" y="617" width="150" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="GCp-Ly-2yy"/>
+                                    <constraint firstAttribute="width" constant="150" id="Odm-9e-PHR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="20"/>
+                                <size key="titleShadowOffset" width="2" height="0.0"/>
+                                <state key="normal" title="Report Bug☹️">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapBugButton:" destination="rp7-f6-K4s" eventType="touchUpInside" id="jXE-hW-4Wc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="24D-Ic-wMt"/>
                         <color key="backgroundColor" systemColor="systemOrangeColor"/>
@@ -103,6 +119,8 @@
                             <constraint firstItem="7E0-4z-NeS" firstAttribute="centerX" secondItem="YqQ-QV-PSG" secondAttribute="centerX" id="2rD-ET-YOL"/>
                             <constraint firstItem="MvI-el-4tJ" firstAttribute="top" secondItem="YqQ-QV-PSG" secondAttribute="top" id="5Gn-db-xaj"/>
                             <constraint firstItem="24D-Ic-wMt" firstAttribute="bottom" secondItem="p4v-Dz-ui3" secondAttribute="bottom" constant="100" id="93K-nt-Ztw"/>
+                            <constraint firstItem="24D-Ic-wMt" firstAttribute="trailing" secondItem="8Dg-1e-gUv" secondAttribute="trailing" constant="20" id="GmD-bx-g5t"/>
+                            <constraint firstItem="24D-Ic-wMt" firstAttribute="bottom" secondItem="8Dg-1e-gUv" secondAttribute="bottom" constant="20" id="Idv-Bf-1mJ"/>
                             <constraint firstItem="MvI-el-4tJ" firstAttribute="leading" secondItem="YqQ-QV-PSG" secondAttribute="leading" id="KnR-yL-r4x"/>
                             <constraint firstItem="7E0-4z-NeS" firstAttribute="top" secondItem="1CT-vD-dTG" secondAttribute="bottom" id="QiK-tz-Shi"/>
                             <constraint firstItem="1CT-vD-dTG" firstAttribute="centerY" secondItem="YqQ-QV-PSG" secondAttribute="centerY" id="Y9O-Mm-NgF"/>
@@ -116,6 +134,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bugButton" destination="8Dg-1e-gUv" id="ecn-1D-DSO"/>
                         <outlet property="createButton" destination="p4v-Dz-ui3" id="muQ-ab-LS7"/>
                         <outlet property="createGameButton" destination="p4v-Dz-ui3" id="46Y-xz-7VY"/>
                         <outlet property="errorLabel" destination="7E0-4z-NeS" id="Xem-dS-8Xw"/>

@@ -11,6 +11,7 @@ import UIKit
 import SpriteKit
 import GameplayKit
 import FirebaseDatabase
+import MessageUI
 
 //struct to keep track of player elements
 struct irlPlayer {
@@ -58,6 +59,9 @@ class irlCreateGame: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var createButton: UIButton!
     
+    @IBOutlet weak var bugButton: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //adds borders
@@ -65,6 +69,11 @@ class irlCreateGame: UIViewController, UITextFieldDelegate {
         createButton.tintColor = UIColor.white
         createButton.layer.borderWidth = 2.0
         createButton.layer.borderColor = CGColor.init(srgbRed: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+        bugButton.backgroundColor = UIColor.init(red: 139/255, green: 0/255, blue: 0/255, alpha: 1)
+        bugButton.layer.cornerRadius = 10.0
+        bugButton.tintColor = UIColor.white
+        bugButton.layer.borderWidth = 2.0
+        bugButton.layer.borderColor = CGColor.init(srgbRed: 255/255, green: 255/255, blue: 255/255, alpha: 1)
         
         //assigns delegates
         name.delegate = self
@@ -132,7 +141,33 @@ class irlCreateGame: UIViewController, UITextFieldDelegate {
         }
         return true
     }
+    
+    //sends email to report bugs
+    
+    @IBAction func tapBugButton(_ sender: Any) {
+        showMailComposer()
+    }
+    
+    func showMailComposer() {
         
+        guard MFMailComposeViewController.canSendMail() else{
+            //tell user they can't sent email
+            return
+            
+        }
+        
+        let composer = MFMailComposeViewController()
+        composer.mailComposeDelegate = self
+        composer.setToRecipients(["virtualdeckpoker@gmail.com"])
+        composer.setSubject("Bug Report From User")
+        composer.setMessageBody("", isHTML: false)
+        
+        present(composer, animated:true)
+        
+    }
+    
 }
+
+
     
 

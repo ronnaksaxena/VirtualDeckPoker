@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -24,14 +24,14 @@
             <objects>
                 <viewController storyboardIdentifier="irlJoinGame" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="DjG-QS-pyD" customClass="irlJoinGame" customModule="Virtual_Deck_Poker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IuD-wl-vyH">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="xXF-I5-pGf">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UFy-Uu-cOh">
-                                <rect key="frame" x="57" y="691" width="300" height="71"/>
+                                <rect key="frame" x="37.5" y="496" width="300" height="71"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="71" id="XfX-kd-xH8"/>
                                     <constraint firstAttribute="width" constant="300" id="XoA-ob-MTm"/>
@@ -47,7 +47,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j4m-RY-rv1" userLabel="backButton">
-                                <rect key="frame" x="10" y="64" width="57" height="52"/>
+                                <rect key="frame" x="10" y="20" width="57" height="52"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="arrow.left.square.fill" catalog="system">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -58,7 +58,7 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="iPJ-om-a1u">
-                                <rect key="frame" x="53" y="399" width="308.5" height="98"/>
+                                <rect key="frame" x="33.5" y="284.5" width="308.5" height="98"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="noy-yp-HnT">
                                         <rect key="frame" x="0.0" y="0.0" width="308.5" height="35"/>
@@ -106,7 +106,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sp2-Ku-cxN" userLabel="errorLabel">
-                                <rect key="frame" x="32" y="497" width="350" height="100"/>
+                                <rect key="frame" x="12.5" y="382.5" width="350" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="FNa-1J-mZX"/>
                                     <constraint firstAttribute="width" constant="350" id="GbI-da-fA4"/>
@@ -116,12 +116,28 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Virtual Deck Poker_sata-1" translatesAutoresizingMaskIntoConstraints="NO" id="xlj-Iu-l9W">
-                                <rect key="frame" x="-93" y="64" width="600" height="300"/>
+                                <rect key="frame" x="-112.5" y="20" width="600" height="250"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="600" id="DRT-de-Zjh"/>
-                                    <constraint firstAttribute="height" constant="300" id="GZG-MZ-S2x"/>
+                                    <constraint firstAttribute="height" constant="250" id="GZG-MZ-S2x"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cL8-Yh-7t3">
+                                <rect key="frame" x="205" y="617" width="150" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="IDQ-mi-UtK"/>
+                                    <constraint firstAttribute="height" constant="30" id="OkC-NH-rT4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="20"/>
+                                <size key="titleShadowOffset" width="2" height="0.0"/>
+                                <state key="normal" title="Report Bug☹️">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapBugButton:" destination="DjG-QS-pyD" eventType="touchUpInside" id="vQW-41-X8o"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Kc5-3u-ucU"/>
                         <color key="backgroundColor" systemColor="systemGreenColor"/>
@@ -135,14 +151,17 @@
                             <constraint firstItem="xXF-I5-pGf" firstAttribute="leading" secondItem="IuD-wl-vyH" secondAttribute="leading" id="S8K-3V-IAS"/>
                             <constraint firstItem="j4m-RY-rv1" firstAttribute="top" secondItem="Kc5-3u-ucU" secondAttribute="top" constant="20" id="SnB-vy-ERq"/>
                             <constraint firstItem="Sp2-Ku-cxN" firstAttribute="top" secondItem="iPJ-om-a1u" secondAttribute="bottom" id="aGg-AF-dEO"/>
+                            <constraint firstItem="Kc5-3u-ucU" firstAttribute="bottom" secondItem="cL8-Yh-7t3" secondAttribute="bottom" constant="20" id="e1y-Di-RIS"/>
                             <constraint firstItem="iPJ-om-a1u" firstAttribute="centerY" secondItem="IuD-wl-vyH" secondAttribute="centerY" id="eZL-xw-Yef"/>
                             <constraint firstItem="UFy-Uu-cOh" firstAttribute="centerX" secondItem="IuD-wl-vyH" secondAttribute="centerX" id="ge8-6n-PWG"/>
                             <constraint firstAttribute="trailing" secondItem="xXF-I5-pGf" secondAttribute="trailing" id="pYU-NR-ehA"/>
+                            <constraint firstItem="Kc5-3u-ucU" firstAttribute="trailing" secondItem="cL8-Yh-7t3" secondAttribute="trailing" constant="20" id="qyK-wl-UGf"/>
                             <constraint firstItem="xlj-Iu-l9W" firstAttribute="centerX" secondItem="IuD-wl-vyH" secondAttribute="centerX" id="vyv-7h-5uA"/>
                             <constraint firstItem="iPJ-om-a1u" firstAttribute="centerX" secondItem="IuD-wl-vyH" secondAttribute="centerX" id="xoC-Sm-YW3"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bugButton" destination="cL8-Yh-7t3" id="kKb-qG-fyR"/>
                         <outlet property="codeText" destination="76X-Xm-kDC" id="cvH-TE-1Oh"/>
                         <outlet property="errorLabel" destination="Sp2-Ku-cxN" id="kMO-ce-Oib"/>
                         <outlet property="joinButton" destination="UFy-Uu-cOh" id="EbK-m0-98t"/>

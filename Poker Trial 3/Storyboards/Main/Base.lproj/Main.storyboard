@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dZj-Hl-sgb">
-    <device id="retina6_7" orientation="portrait" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dZj-Hl-sgb">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -34,37 +34,21 @@
             <objects>
                 <viewController storyboardIdentifier="Main" title="Main" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dZj-Hl-sgb" customClass="Main" customModule="Virtual_Deck_Poker" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WuV-Hb-HQ5">
-                        <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="50E-yn-Og3" userLabel="background">
-                                <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Virtual Deck Poker_sata-1" translatesAutoresizingMaskIntoConstraints="NO" id="ewS-bV-wuH">
-                                <rect key="frame" x="-86" y="64" width="600" height="300"/>
+                                <rect key="frame" x="-93" y="64" width="600" height="250"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="600" id="IvI-Tj-BWX"/>
-                                    <constraint firstAttribute="height" constant="300" id="T2v-vG-r7r"/>
+                                    <constraint firstAttribute="height" constant="250" id="T2v-vG-r7r"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mno-kg-Eam">
-                                <rect key="frame" x="258" y="842" width="150" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="48I-hU-wk2"/>
-                                    <constraint firstAttribute="height" constant="30" id="k1A-q2-td9"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="DINAlternate-Bold" family="DIN Alternate" pointSize="20"/>
-                                <size key="titleShadowOffset" width="2" height="0.0"/>
-                                <state key="normal" title="Report Bug☹️">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <action selector="tapBugButton:" destination="dZj-Hl-sgb" eventType="touchUpInside" id="8eu-KZ-LBq"/>
-                                </connections>
-                            </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="75" translatesAutoresizingMaskIntoConstraints="NO" id="J4l-Aa-TKM">
-                                <rect key="frame" x="114" y="478.66666666666674" width="200" height="169"/>
+                                <rect key="frame" x="107" y="463.5" width="200" height="169"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n8m-EI-g2y">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="47"/>
@@ -79,7 +63,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E6D-Jf-QeS">
-                                        <rect key="frame" x="0.0" y="121.99999999999994" width="200" height="47"/>
+                                        <rect key="frame" x="0.0" y="122" width="200" height="47"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="200" id="ZHu-eD-Lx6"/>
                                             <constraint firstAttribute="height" constant="47" id="tl1-el-Zmc"/>
@@ -100,20 +84,17 @@
                         <viewLayoutGuide key="safeArea" id="tu9-zh-gAg"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="tu9-zh-gAg" firstAttribute="trailing" secondItem="Mno-kg-Eam" secondAttribute="trailing" constant="20" id="2lq-xu-0z3"/>
                             <constraint firstItem="J4l-Aa-TKM" firstAttribute="centerX" secondItem="WuV-Hb-HQ5" secondAttribute="centerX" id="2vp-HG-j6e"/>
                             <constraint firstAttribute="bottom" secondItem="50E-yn-Og3" secondAttribute="bottom" id="4wz-b0-mEl"/>
-                            <constraint firstItem="ewS-bV-wuH" firstAttribute="top" secondItem="tu9-zh-gAg" secondAttribute="top" constant="20" id="EZx-qb-dzb"/>
                             <constraint firstAttribute="trailing" secondItem="50E-yn-Og3" secondAttribute="trailing" id="Iwp-88-J9P"/>
-                            <constraint firstItem="tu9-zh-gAg" firstAttribute="bottom" secondItem="Mno-kg-Eam" secondAttribute="bottom" constant="20" id="MUo-1w-URQ"/>
+                            <constraint firstItem="ewS-bV-wuH" firstAttribute="top" secondItem="tu9-zh-gAg" secondAttribute="top" constant="20" id="aW8-3r-ule"/>
                             <constraint firstItem="50E-yn-Og3" firstAttribute="leading" secondItem="WuV-Hb-HQ5" secondAttribute="leading" id="f41-6A-szl"/>
                             <constraint firstItem="50E-yn-Og3" firstAttribute="top" secondItem="WuV-Hb-HQ5" secondAttribute="top" id="gcs-St-Cwz"/>
-                            <constraint firstItem="ewS-bV-wuH" firstAttribute="centerX" secondItem="WuV-Hb-HQ5" secondAttribute="centerX" id="gpJ-Gg-tVN"/>
                             <constraint firstItem="J4l-Aa-TKM" firstAttribute="centerY" secondItem="WuV-Hb-HQ5" secondAttribute="centerY" constant="100" id="x3S-U1-jLL"/>
+                            <constraint firstItem="ewS-bV-wuH" firstAttribute="centerX" secondItem="WuV-Hb-HQ5" secondAttribute="centerX" id="xMc-E6-GF9"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="bugButton" destination="Mno-kg-Eam" id="HfY-HC-6In"/>
                         <outlet property="createButton" destination="E6D-Jf-QeS" id="7GI-rz-2nt"/>
                         <outlet property="joinButton" destination="n8m-EI-g2y" id="6Db-sD-bOH"/>
                     </connections>
